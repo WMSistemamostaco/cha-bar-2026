@@ -63,3 +63,197 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .btn-maps{display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:7px 18px;font-family:'EB Garamond',serif;font-size:13px;letter-spacing:0.08em;background:transparent;border:1px solid var(--blue-light);color:var(--blue-light);border-radius:20px;cursor:pointer;text-decoration:none;transition:background 0.2s,color 0.2s;}
 .btn-maps:hover{background:var(--blue-light);color:white;}
 .verse{font-size:14px;font
+       <div class="form-title">Confirme sua presença</div>
+    <div class="field"><label>Seu nome completo</label><input type="text" id="guestName" placeholder="Ex: Maria da Silva" maxlength="80"/></div>
+    <div class="field">
+      <label>Quantas pessoas virão? (incluindo você)</label>
+      <select id="guestCount">
+        <option value="1">1 pessoa — só eu</option>
+        <option value="2">2 pessoas</option>
+        <option value="3">3 pessoas</option>
+        <option value="4">4 pessoas</option>
+        <option value="5">5 pessoas</option>
+        <option value="6">6 pessoas ou mais</option>
+      </select>
+    </div>
+    <button class="btn-confirm" id="confirmBtn" onclick="confirmar()">Confirmar Presença</button>
+    <div class="status-msg" id="statusMsg"></div>
+  </div>
+
+  <div class="success-card" id="successCard">
+    <div class="success-icon">🍻</div>
+    <div class="success-title" id="successTitle">Presença confirmada!</div>
+    <div class="success-msg" id="successMsg"></div>
+  </div>
+
+  <button class="painel-btn" onclick="abrirPainel()">⚙ Painel dos anfitriões</button>
+
+</div>
+
+<div class="painel-overlay" id="painelOverlay" onclick="fecharPainelFora(event)">
+  <div class="painel-modal">
+    <div class="painel-header">
+      <span class="painel-title">Painel dos Anfitriões</span>
+      <button class="painel-close" onclick="fecharPainel()">×</button>
+    </div>
+    <div id="lockScreen" class="lock-screen">
+      <span class="lock-label">Acesso restrito</span>
+      <input type="password" class="lock-input" id="senhaInput" placeholder="••••••" maxlength="20" onkeydown="if(event.key==='Enter')verificarSenha()"/>
+      <button class="btn-entrar" onclick="verificarSenha()">Entrar</button>
+      <div class="lock-error" id="lockError"></div>
+    </div>
+    <div id="painelContent" style="display:none;">
+      <div class="stats-row">
+        <div class="stat"><span class="stat-num" id="totalConf">0</span><span class="stat-lbl">Confirmados</span></div>
+        <div class="stat"><span class="stat-num" id="totalPess">0</span><span class="stat-lbl">Pessoas</span></div>
+        <div class="stat"><span class="stat-num" id="totalAgu">100</span><span class="stat-lbl">Aguardando</span></div>
+      </div>
+      <div class="progress-card">
+        <div class="progress-header"><span class="progress-label">Progresso — 100 convidados</span><span class="progress-pct" id="pct">0%</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="pBar" style="width:0%"></div></div>
+      </div>
+      <div class="guest-card">
+        <div class="guest-card-title">Lista de confirmações</div>
+        <ul class="guest-list" id="painelList"><li class="empty-msg">Nenhuma confirmação ainda.</li></ul>
+      </div>
+      <button class="btn-refresh" onclick="atualizarPainel()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
+        Atualizar confirmações
+      </button>
+      <button class="btn-limpar" onclick="limparDados()">Limpar todos os dados</button>
+      <div class="last-update" id="lastUp">—</div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+emailjs.init('h33oxWzwErwi8kwUF');
+var SERVICE  = 'service_5nd34jt';
+var TEMPLATE = 'template_dcxp758';
+var EMAIL_TO = 'mostacowilian28@gmail.com';
+var SENHA    = 'amanda2026';
+var KEY      = 'chabar_aw2026_v1';
+
+function getGuests() {
+  try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch(e) { return []; }
+}
+function saveGuests(list) {
+  try { localStorage.setItem(KEY, JSON.stringify(list)); } catch(e) {}
+}
+
+async function confirmar() {
+  var name     = document.getElementById('guestName').value.trim();
+  var countVal = document.getElementById('guestCount').value;
+  if (!name) { document.getElementById('statusMsg').textContent = 'Por favor, informe seu nome completo.'; return; }
+
+  var btn = document.getElementById('confirmBtn');
+  btn.disabled = true; btn.textContent = 'Enviando...';
+  document.getElementById('statusMsg').textContent = '';
+
+  var now        = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
+  var countNum   = parseInt(countVal);
+  var countLabel = countVal === '6' ? '6 ou mais' : countVal;
+
+  var guests = getGuests();
+  guests.unshift({ name: name, count: countNum, countLabel: countLabel, time: now });
+  saveGuests(guests);
+
+  var totalPess  = guests.reduce(function(s,g){ return s + (g.count||1); }, 0);
+  var listaEmail = guests.map(function(g, i){
+    return (i+1) + '. ' + g.name + ' — ' + (g.countLabel||g.count) + ' pessoa(s) — ' + g.time;
+  }).join('\n');
+
+  try {
+    await emailjs.send(SERVICE, TEMPLATE, {
+      to_email:     EMAIL_TO,
+      guest_name:   name,
+      guest_count:  countLabel,
+      confirmed_at: now,
+      subject:      '[Cha Bar] Nova confirmacao: ' + name + ' (' + countLabel + ' pessoa(s))',
+      message:
+        'CHA BAR — AMANDA & WILIAN\n' +
+        '11/07/2026 as 18h30 — Rua Raul Belone 160, Ibipora-PR\n\n' +
+        'NOVA CONFIRMACAO:\n' +
+        'Nome: ' + name + '\n' +
+        'Pessoas: ' + countLabel + '\n' +
+        'Horario: ' + now + '\n\n' +
+        '----------------------------\n' +
+        'LISTA COMPLETA (' + guests.length + ' confirmado(s) / ' + totalPess + ' pessoa(s)):\n\n' +
+        listaEmail + '\n\n' +
+        '----------------------------\n' +
+        'Cha Bar Amanda & Wilian — 11/07/2026'
+    });
+  } catch(e) { console.error('EmailJS:', e); }
+
+  document.getElementById('formCard').style.display = 'none';
+  document.getElementById('successCard').style.display = 'block';
+  document.getElementById('successTitle').textContent = 'Obrigado, ' + name.split(' ')[0] + '!';
+  document.getElementById('successMsg').innerHTML =
+    'Presenca confirmada para <strong>' + countLabel + ' pessoa' + (countNum > 1 ? 's' : '') + '</strong>.<br>Nos vemos no Cha Bar! 🍻🎉';
+}
+
+function abrirPainel() {
+  document.getElementById('painelOverlay').classList.add('active');
+  document.getElementById('senhaInput').value = '';
+  document.getElementById('lockError').textContent = '';
+  document.getElementById('lockScreen').style.display = 'block';
+  document.getElementById('painelContent').style.display = 'none';
+  setTimeout(function(){ document.getElementById('senhaInput').focus(); }, 100);
+}
+function fecharPainel() { document.getElementById('painelOverlay').classList.remove('active'); }
+function fecharPainelFora(e) { if (e.target === document.getElementById('painelOverlay')) fecharPainel(); }
+
+function verificarSenha() {
+  if (document.getElementById('senhaInput').value === SENHA) {
+    document.getElementById('lockScreen').style.display = 'none';
+    document.getElementById('painelContent').style.display = 'block';
+    atualizarPainel();
+  } else {
+    document.getElementById('lockError').textContent = 'Senha incorreta. Tente novamente.';
+  }
+}
+
+function atualizarPainel() {
+  var guests    = getGuests();
+  var totalConf = guests.length;
+  var totalPess = guests.reduce(function(s,g){ return s + (g.count||1); }, 0);
+  var aguardando= Math.max(0, 100 - totalConf);
+  var pct        = Math.min(100, Math.round((totalConf / 100) * 100));
+
+  document.getElementById('totalConf').textContent = totalConf;
+  document.getElementById('totalPess').textContent = totalPess;
+  document.getElementById('totalAgu').textContent  = aguardando;
+  document.getElementById('pct').textContent       = pct + '%';
+  document.getElementById('pBar').style.width      = pct + '%';
+
+  var ul = document.getElementById('painelList');
+  ul.innerHTML = '';
+  if (guests.length === 0) {
+    ul.innerHTML = '<li class="empty-msg">Nenhuma confirmacao ainda.</li>';
+  } else {
+    guests.forEach(function(g) {
+      var li = document.createElement('li');
+      li.className = 'guest-item';
+      li.innerHTML =
+        '<span class="guest-name">' + g.name + '</span>' +
+        '<span class="guest-badge">' + (g.countLabel||g.count) + ' pessoa(s)</span>' +
+        '<span class="guest-time">' + (g.time ? g.time.split(',')[0] : '') + '</span>';
+      ul.appendChild(li);
+    });
+  }
+  document.getElementById('lastUp').textContent = 'Atualizado: ' + new Date().toLocaleTimeString('pt-BR');
+}
+
+function limparDados() {
+  var senha = prompt('Digite a senha para apagar os dados:');
+  if (senha === null) return;
+  if (senha !== SENHA) { alert('Senha incorreta! Os dados nao foram apagados.'); return; }
+  if (!confirm('Tem certeza? Esta acao apagara TODAS as confirmacoes!')) return;
+  saveGuests([]);
+  atualizarPainel();
+  alert('Dados apagados com sucesso.');
+}
+</script>
+</body>
+</html>

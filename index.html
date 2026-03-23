@@ -60,11 +60,6 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .verse{font-size:14px;font-style:italic;color:var(--mid);line-height:1.8;max-width:360px;margin:0.5rem auto 0;}
 
 /* PRESENTES */
-.presentes-card{background:white;border:1px solid var(--light);border-radius:16px;padding:1.75rem;margin-bottom:1.5rem;text-align:center;}
-.presentes-label{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:0.75rem;}
-.presentes-msg{font-size:14px;color:var(--mid);font-style:italic;line-height:1.6;margin-bottom:1.25rem;}
-.btn-presentes{display:inline-flex;align-items:center;gap:8px;padding:11px 28px;font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:500;background:transparent;border:1.5px solid var(--blue);color:var(--blue);border-radius:8px;cursor:pointer;text-decoration:none;transition:background 0.2s,color 0.2s;}
-.btn-presentes:hover{background:var(--blue);color:white;}
 
 /* FORM */
 .form-card{background:white;border:1px solid var(--light);border-radius:16px;padding:2rem 1.75rem;margin-bottom:1.5rem;}
@@ -125,9 +120,7 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .btn-limpar:hover{background:#fff0f0;}
 .last-update{font-size:11px;color:var(--mid);text-align:center;font-style:italic;margin-top:8px;min-height:16px;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
-.invite-card,.form-card,.presentes-card{animation:fadeUp 0.6s ease both;}
-.presentes-card{animation-delay:0.1s;}
-.form-card{animation-delay:0.2s;}
+.invite-card,.form-card,.form-card{animation-delay:0.2s;}
 @media(max-width:480px){.event-type{font-size:30px;}.container{padding:1rem 1rem 2.5rem;}.invite-card{padding:2rem 1.25rem;}}
 </style>
 </head>
@@ -171,16 +164,7 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 
     <div class="divider"><div class="div-line"></div><span class="div-star">✦</span><div class="div-line"></div></div>
     <p class="verse">Vem comemorar esse momento especial com a gente! 🥂<br>Traga muita alegria e bom humor!</p>
-  </div>
-
-  <div class="presentes-card">
-    <div class="presentes-label">Lista de Presentes</div>
-    <p class="presentes-msg">Sua presença é o nosso maior presente! Mas se quiser nos presentear, acesse nossa lista abaixo.</p>
-    <a class="btn-presentes" href="https://noivos.casar.com/amanda-e-wilian" target="_blank">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v10H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg>
-      Ver Lista de Presentes
-    </a>
-  </div>
+  
 
   <div class="form-card" id="formCard">
     <div class="form-title">Confirme sua presença</div>

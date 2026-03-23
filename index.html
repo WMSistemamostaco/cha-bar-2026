@@ -35,7 +35,7 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 
 .cover-photo{width:100%;height:auto;border-radius:16px;margin-bottom:1.5rem;display:block;border:2px solid var(--blue-pale);}
 
-/* Card principal com imagem de fundo e transparência */
+/* Card principal com imagem de fundo e transparência de 30% */
 .invite-card{
     background:white;border:1px solid var(--light);border-top:4px solid var(--blue);border-radius:16px;padding:2.5rem 2rem;text-align:center;margin-bottom:1.5rem;position:relative;overflow:hidden;z-index:1;
 }
@@ -111,7 +111,6 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .stat{flex: 1 1 calc(33% - 8px); background:white; border:1px solid var(--light); border-radius:10px; padding:0.8rem 0.3rem; text-align:center;}
 .stat-num{font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:400; color:var(--blue); display:block; line-height:1; margin-bottom:3px;}
 .stat-lbl{font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:var(--mid);}
-/* Cores dos contadores de comida */
 .stat-salgado { border-bottom: 3px solid var(--blue-light); }
 .stat-doce { border-bottom: 3px solid var(--pink); }
 .stat-ambos { border-bottom: 3px solid var(--orange); }
@@ -158,7 +157,7 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
       <div class="location-label">Local do evento</div>
       <div class="location-name">Rua Raul Belone, 160</div>
       <div class="location-sub">Ibiporã — PR</div>
-      <a class="btn-maps" href="https://maps.app.goo.gl/9yvWk6k9f8nZ6fWf8" target="_blank">
+      <a class="btn-maps" href="https://www.google.com/maps/search/?api=1&query=Rua+Raul+Belone+160+Ibipora+PR" target="_blank">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
         Me leve até lá
       </a>
@@ -259,7 +258,6 @@ async function confirmar() {
   const countSelect = document.getElementById('guestCount');
   const statusMsg = document.getElementById('statusMsg');
 
-  // Resetar estilos de erro
   nameInput.classList.remove('error');
   foodSelect.classList.remove('error');
   statusMsg.textContent = '';

@@ -198,12 +198,14 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
       </select>
     </div>
     <div class="field">
-      <label>O que vai trazer para comer?</label>
-      <select id="foodType">
-        <option value="Salgado">Vou levar um Salgado</option>
-        <option value="Doce">Vou levar um Doce</option>
-        <option value="Os Dois">Levo os dois!</option>
-      </select>
+  <label>O que vai trazer para comer?</label>
+  <select id="foodType">
+    <option value="" disabled selected>Selecionar...</option>
+    <option value="Salgado">Vou levar um Salgado</option>
+    <option value="Doce">Vou levar um Doce</option>
+    <option value="Os Dois">Levo os dois!</option>
+  </select>
+</div>
     </div>
     <button class="btn-confirm" id="confirmBtn" onclick="confirmar()">Confirmar Presença</button>
     <div class="status-msg" id="statusMsg"></div>

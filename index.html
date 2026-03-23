@@ -35,18 +35,31 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 
 .cover-photo{width:100%;height:auto;border-radius:16px;margin-bottom:1.5rem;display:block;border:2px solid var(--blue-pale);}
 
-/* Card principal com imagem de fundo e transparência de 30% */
+/* Card principal com imagem de fundo corrigida */
 .invite-card{
-    background:white;border:1px solid var(--light);border-top:4px solid var(--blue);border-radius:16px;padding:2.5rem 2rem;text-align:center;margin-bottom:1.5rem;position:relative;overflow:hidden;z-index:1;
+    background:white;
+    border:1px solid var(--light);
+    border-top:4px solid var(--blue);
+    border-radius:16px;
+    padding: 2.5rem 2rem;
+    text-align:center;
+    margin-bottom:1.5rem;
+    position:relative;
+    overflow:hidden;
+    z-index:1;
 }
 .invite-card::before {
     content: "";
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-image: url('https://wmsistemamostaco.github.io/cha-bar-2026/--chabar.jpeg');
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    /* Ajuste para carregar o arquivo com traços do GitHub */
+    background-image: url('./--chabar.jpeg'); 
     background-size: cover;
     background-position: center;
-    opacity: 0.5;
+    opacity: 0.3;
     z-index: -1;
 }
 .invite-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--blue),var(--silver),var(--blue));}

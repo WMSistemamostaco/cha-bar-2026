@@ -24,6 +24,7 @@
   --mid:#5D6D7E;
   --light:#D5D8DC;
   --green:#27ae60;
+  --orange:#e67e22;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--cream);font-family:'EB Garamond',Georgia,serif;color:var(--dark);min-height:100vh;overflow-x:hidden;}
@@ -98,10 +99,14 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .lock-input:focus{border-color:var(--blue-light);}
 .btn-entrar{width:100%;padding:11px;font-family:'Cormorant Garamond',serif;font-size:17px;background:var(--blue);color:white;border:none;border-radius:8px;cursor:pointer;}
 .lock-error{font-size:13px;color:#c0392b;font-style:italic;margin-top:6px;min-height:18px;}
-.stats-row{display:flex;gap:8px;margin-bottom:1.25rem;}
-.stat{flex:1;background:white;border:1px solid var(--light);border-radius:10px;padding:0.8rem 0.5rem;text-align:center;}
-.stat-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;color:var(--blue);display:block;line-height:1;margin-bottom:3px;}
-.stat-lbl{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);}
+
+/* Estilo dos contadores */
+.stats-row{display:flex; flex-wrap: wrap; gap:8px; margin-bottom: 1rem;}
+.stat{flex: 1 1 calc(33% - 8px); background:white; border:1px solid var(--light); border-radius:10px; padding:0.6rem 0.3rem; text-align:center;}
+.stat-num{font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:400; color:var(--blue); display:block; line-height:1; margin-bottom:3px;}
+.stat-lbl{font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:var(--mid);}
+.stat-food{border-bottom: 3px solid var(--orange);}
+
 .progress-card{background:white;border:1px solid var(--light);border-radius:10px;padding:1rem 1.25rem;margin-bottom:1.25rem;}
 .progress-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
 .progress-label{font-size:12px;color:var(--mid);}
@@ -131,6 +136,7 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
     .event-type{font-size:30px;}
     .container{padding:1rem 1rem 2.5rem;}
     .invite-card{padding:2rem 1.25rem;}
+    .stat{flex: 1 1 calc(50% - 8px);}
 }
 </style>
 </head>
@@ -230,7 +236,11 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
         <div class="stat"><span class="stat-num" id="totalConf">0</span><span class="stat-lbl">Confirmados</span></div>
         <div class="stat"><span class="stat-num" id="totalPess">0</span><span class="stat-lbl">Pessoas</span></div>
         <div class="stat"><span class="stat-num" id="totalAgu">100</span><span class="stat-lbl">Aguardando</span></div>
+        <div class="stat stat-food"><span class="stat-num" id="totalSal">0</span><span class="stat-lbl">Salgados</span></div>
+        <div class="stat stat-food"><span class="stat-num" id="totalDoc">0</span><span class="stat-lbl">Doces</span></div>
+        <div class="stat stat-food"><span class="stat-num" id="totalAmbos">0</span><span class="stat-lbl">Ambos</span></div>
       </div>
+      
       <div class="progress-card">
         <div class="progress-header"><span class="progress-label">Progresso — 100 convidados</span><span class="progress-pct" id="pct">0%</span></div>
         <div class="progress-bar"><div class="progress-fill" id="pBar" style="width:0%"></div></div>
@@ -289,7 +299,6 @@ async function confirmar() {
   }).join('\n');
 
   try {
-    // Loop para enviar para os dois e-mails
     EMAILS.forEach(email => {
         emailjs.send(SERVICE, TEMPLATE, {
           to_email:     email,
@@ -346,9 +355,18 @@ function atualizarPainel() {
   var aguardando= Math.max(0, 100 - totalConf);
   var pct        = Math.min(100, Math.round((totalConf / 100) * 100));
 
+  // Contagem por tipo de comida
+  var salgados = guests.filter(g => g.food === 'Salgado').length;
+  var doces    = guests.filter(g => g.food === 'Doce').length;
+  var ambos    = guests.filter(g => g.food === 'Os Dois').length;
+
   document.getElementById('totalConf').textContent = totalConf;
   document.getElementById('totalPess').textContent = totalPess;
   document.getElementById('totalAgu').textContent  = aguardando;
+  document.getElementById('totalSal').textContent   = salgados;
+  document.getElementById('totalDoc').textContent   = doces;
+  document.getElementById('totalAmbos').textContent = ambos;
+  
   document.getElementById('pct').textContent       = pct + '%';
   document.getElementById('pBar').style.width      = pct + '%';
 

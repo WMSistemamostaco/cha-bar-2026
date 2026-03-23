@@ -85,14 +85,41 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .success-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;color:var(--dark);margin-bottom:0.5rem;}
 .success-msg{font-size:15px;color:var(--mid);line-height:1.7;font-style:italic;}
 
-.painel-btn{width:100%;padding:10px;font-family:'EB Garamond',serif;font-size:13px;letter-spacing:0.1em;background:transparent;border:1px solid var(--light);color:var(--mid);border-radius:8px;cursor:pointer;margin-bottom:1rem;transition:background 0.2s;}
-.painel-btn:hover{background:var(--blue-pale);}
+/* Ajuste do Botão do Painel no Rodapé solicitado */
+.footer-container{padding: 20px 0 40px; text-align: center;}
+.painel-btn {
+    width: 100%;
+    max-width: 250px;
+    margin: 10px auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    font-family: 'EB Garamond', serif;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--orange);
+    color: var(--orange);
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.painel-btn:hover {
+    background: var(--orange);
+    color: white;
+    box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
+}
+
 .painel-overlay{display:none;position:fixed;inset:0;background:rgba(26,37,47,0.7);z-index:1000;align-items:center;justify-content:center;padding:1rem;}
 .painel-overlay.active{display:flex;}
 .painel-modal{background:var(--cream);border-radius:16px;padding:2rem;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;}
 .painel-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;}
 .painel-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--dark);}
 .painel-close{background:none;border:none;font-size:22px;color:var(--mid);cursor:pointer;line-height:1;}
+
 .lock-screen{text-align:center;padding:1rem 0;}
 .lock-label{font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);margin-bottom:0.75rem;display:block;}
 .lock-input{width:100%;font-size:16px;padding:10px 14px;border:1px solid var(--light);border-radius:8px;background:white;color:var(--dark);outline:none;text-align:center;letter-spacing:0.2em;margin-bottom:0.75rem;}
@@ -100,7 +127,7 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .btn-entrar{width:100%;padding:11px;font-family:'Cormorant Garamond',serif;font-size:17px;background:var(--blue);color:white;border:none;border-radius:8px;cursor:pointer;}
 .lock-error{font-size:13px;color:#c0392b;font-style:italic;margin-top:6px;min-height:18px;}
 
-/* Estilo dos contadores */
+/* Contadores Internos do Painel */
 .stats-row{display:flex; flex-wrap: wrap; gap:8px; margin-bottom: 1rem;}
 .stat{flex: 1 1 calc(33% - 8px); background:white; border:1px solid var(--light); border-radius:10px; padding:0.6rem 0.3rem; text-align:center;}
 .stat-num{font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:400; color:var(--blue); display:block; line-height:1; margin-bottom:3px;}
@@ -120,9 +147,6 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .guest-item:last-child{border-bottom:none;}
 .guest-name{color:var(--dark);flex:1;}
 .guest-badge{font-size:11px;background:var(--blue-pale);border:1px solid var(--blue-light);color:var(--blue);padding:2px 8px;border-radius:20px;white-space:nowrap;}
-.food-badge{font-size:11px;background:var(--silver-light);border:1px solid var(--silver);color:var(--dark);padding:2px 8px;border-radius:20px;white-space:nowrap;}
-.guest-time{font-size:11px;color:var(--mid);white-space:nowrap;}
-.empty-msg{font-size:13px;color:var(--mid);text-align:center;padding:1.5rem 0;font-style:italic;}
 .btn-refresh{width:100%;padding:10px;font-size:14px;background:var(--blue);color:white;border:none;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:opacity 0.15s;margin-bottom:8px;}
 .btn-refresh:hover{opacity:0.88;}
 .btn-limpar{width:100%;padding:8px;font-size:12px;background:transparent;border:1px solid #c0392b;color:#c0392b;border-radius:8px;cursor:pointer;transition:background 0.2s;}
@@ -198,14 +222,13 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
       </select>
     </div>
     <div class="field">
-  <label>O que vai trazer para comer?</label>
-  <select id="foodType">
-    <option value="" disabled selected>Selecionar...</option>
-    <option value="Salgado">Vou levar um Salgado</option>
-    <option value="Doce">Vou levar um Doce</option>
-    <option value="Os Dois">Levo os dois!</option>
-  </select>
-</div>
+      <label>O que vai trazer para comer?</label>
+      <select id="foodType">
+        <option value="" disabled selected>Selecionar...</option>
+        <option value="Salgado">Vou levar um Salgado</option>
+        <option value="Doce">Vou levar um Doce</option>
+        <option value="Os Dois">Levo os dois!</option>
+      </select>
     </div>
     <button class="btn-confirm" id="confirmBtn" onclick="confirmar()">Confirmar Presença</button>
     <div class="status-msg" id="statusMsg"></div>
@@ -217,7 +240,12 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
     <div class="success-msg" id="successMsg"></div>
   </div>
 
-  <button class="painel-btn" onclick="abrirPainel()">⚙ Painel dos noivos</button>
+  <div class="footer-container">
+      <button class="painel-btn" onclick="abrirPainel()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          Painel dos Noivos
+      </button>
+  </div>
 
 </div>
 
@@ -237,12 +265,11 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
       <div class="stats-row">
         <div class="stat"><span class="stat-num" id="totalConf">0</span><span class="stat-lbl">Confirmados</span></div>
         <div class="stat"><span class="stat-num" id="totalPess">0</span><span class="stat-lbl">Pessoas</span></div>
-        <div class="stat"><span class="stat-num" id="totalAgu">100</span><span class="stat-lbl">Aguardando</span></div>
+        <div class="stat"><span class="stat-num" id="totalAgu">100</span><span class="stat-lbl">Restantes</span></div>
         <div class="stat stat-food"><span class="stat-num" id="totalSal">0</span><span class="stat-lbl">Salgados</span></div>
         <div class="stat stat-food"><span class="stat-num" id="totalDoc">0</span><span class="stat-lbl">Doces</span></div>
         <div class="stat stat-food"><span class="stat-num" id="totalAmbos">0</span><span class="stat-lbl">Ambos</span></div>
       </div>
-      
       <div class="progress-card">
         <div class="progress-header"><span class="progress-label">Progresso — 100 convidados</span><span class="progress-pct" id="pct">0%</span></div>
         <div class="progress-bar"><div class="progress-fill" id="pBar" style="width:0%"></div></div>
@@ -251,10 +278,7 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
         <div class="guest-card-title">Lista de confirmações</div>
         <ul class="guest-list" id="painelList"><li class="empty-msg">Nenhuma confirmação ainda.</li></ul>
       </div>
-      <button class="btn-refresh" onclick="atualizarPainel()">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
-        Atualizar confirmações
-      </button>
+      <button class="btn-refresh" onclick="atualizarPainel()">Atualizar lista</button>
       <button class="btn-limpar" onclick="limparDados()">Limpar todos os dados</button>
       <div class="last-update" id="lastUp">—</div>
     </div>
@@ -270,72 +294,49 @@ var EMAILS    = ['mostacowilian28@gmail.com', 'amanda.m_moreira@hotmail.com'];
 var SENHA     = 'amanda2026';
 var KEY       = 'chabar_aw2026_v1';
 
-function getGuests() {
-  try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch(e) { return []; }
-}
-function saveGuests(list) {
-  try { localStorage.setItem(KEY, JSON.stringify(list)); } catch(e) {}
-}
+function getGuests() { try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch(e) { return []; } }
+function saveGuests(list) { try { localStorage.setItem(KEY, JSON.stringify(list)); } catch(e) {} }
 
 async function confirmar() {
-  var name      = document.getElementById('guestName').value.trim();
-  var countVal  = document.getElementById('guestCount').value;
-  var food      = document.getElementById('foodType').value;
-  if (!name) { document.getElementById('statusMsg').textContent = 'Por favor, informe seu nome completo.'; return; }
+  var name = document.getElementById('guestName').value.trim();
+  var countVal = document.getElementById('guestCount').value;
+  var food = document.getElementById('foodType').value;
+  
+  if (!name) { document.getElementById('statusMsg').textContent = 'Por favor, informe seu nome.'; return; }
+  if (!food) { document.getElementById('statusMsg').textContent = 'Por favor, selecione o que vai trazer.'; return; }
 
   var btn = document.getElementById('confirmBtn');
   btn.disabled = true; btn.textContent = 'Enviando...';
-  document.getElementById('statusMsg').textContent = '';
-
-  var now        = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
-  var countNum   = parseInt(countVal);
-  var countLabel = countVal === '6' ? '6 ou mais' : countVal;
-
+  
+  var now = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
+  var countNum = parseInt(countVal);
   var guests = getGuests();
-  guests.unshift({ name: name, count: countNum, countLabel: countLabel, food: food, time: now });
+  guests.unshift({ name: name, count: countNum, food: food, time: now });
   saveGuests(guests);
-
-  var totalPess  = guests.reduce(function(s,g){ return s + (g.count||1); }, 0);
-  var listaEmail = guests.map(function(g, i){
-    return (i+1) + '. ' + g.name + ' — ' + (g.countLabel||g.count) + ' pessoa(s) — Traz: ' + g.food + ' — ' + g.time;
-  }).join('\n');
 
   try {
     EMAILS.forEach(email => {
         emailjs.send(SERVICE, TEMPLATE, {
-          to_email:     email,
-          guest_name:   name,
-          guest_count:  countLabel,
+          to_email: email,
+          guest_name: name,
+          guest_count: countVal,
           confirmed_at: now,
-          subject:      '[Cha Bar] Confirmacao: ' + name + ' (' + food + ')',
-          message:
-            'CHA BAR — AMANDA & WILIAN\n' +
-            'NOVA CONFIRMACAO:\n' +
-            'Nome: ' + name + '\n' +
-            'Pessoas: ' + countLabel + '\n' +
-            'Vai trazer: ' + food + '\n' +
-            'Horario: ' + now + '\n\n' +
-            '----------------------------\n' +
-            'LISTA COMPLETA (' + guests.length + ' confirmado(s) / ' + totalPess + ' pessoa(s)):\n\n' +
-            listaEmail
+          subject: '[Chá Bar] ' + name + ' confirmou!',
+          message: 'Nome: ' + name + '\nPessoas: ' + countVal + '\nTrará: ' + food + '\nHora: ' + now
         });
     });
-  } catch(e) { console.error('EmailJS:', e); }
+  } catch(e) {}
 
   document.getElementById('formCard').style.display = 'none';
   document.getElementById('successCard').style.display = 'block';
   document.getElementById('successTitle').textContent = 'Obrigado, ' + name.split(' ')[0] + '!';
-  document.getElementById('successMsg').innerHTML =
-    'Presenca confirmada para <strong>' + countLabel + ' pessoa' + (countNum > 1 ? 's' : '') + '</strong>.<br>Combinado que você trará: ' + food + '. 🍻🎉';
+  document.getElementById('successMsg').innerHTML = 'Confirmado para <strong>' + countVal + ' pessoa(s)</strong>.<br>Combinado o envio de: ' + food + '. 🍻';
 }
 
 function abrirPainel() {
   document.getElementById('painelOverlay').classList.add('active');
-  document.getElementById('senhaInput').value = '';
-  document.getElementById('lockError').textContent = '';
   document.getElementById('lockScreen').style.display = 'block';
   document.getElementById('painelContent').style.display = 'none';
-  setTimeout(function(){ document.getElementById('senhaInput').focus(); }, 100);
 }
 function fecharPainel() { document.getElementById('painelOverlay').classList.remove('active'); }
 function fecharPainelFora(e) { if (e.target === document.getElementById('painelOverlay')) fecharPainel(); }
@@ -345,61 +346,41 @@ function verificarSenha() {
     document.getElementById('lockScreen').style.display = 'none';
     document.getElementById('painelContent').style.display = 'block';
     atualizarPainel();
-  } else {
-    document.getElementById('lockError').textContent = 'Senha incorreta. Tente novamente.';
-  }
+  } else { document.getElementById('lockError').textContent = 'Senha incorreta!'; }
 }
 
 function atualizarPainel() {
-  var guests    = getGuests();
+  var guests = getGuests();
   var totalConf = guests.length;
-  var totalPess = guests.reduce(function(s,g){ return s + (g.count||1); }, 0);
-  var aguardando= Math.max(0, 100 - totalConf);
-  var pct        = Math.min(100, Math.round((totalConf / 100) * 100));
-
-  // Contagem por tipo de comida
-  var salgados = guests.filter(g => g.food === 'Salgado').length;
-  var doces    = guests.filter(g => g.food === 'Doce').length;
-  var ambos    = guests.filter(g => g.food === 'Os Dois').length;
-
+  var totalPess = guests.reduce((s,g) => s + (g.count||1), 0);
+  
   document.getElementById('totalConf').textContent = totalConf;
   document.getElementById('totalPess').textContent = totalPess;
-  document.getElementById('totalAgu').textContent  = aguardando;
-  document.getElementById('totalSal').textContent   = salgados;
-  document.getElementById('totalDoc').textContent   = doces;
-  document.getElementById('totalAmbos').textContent = ambos;
+  document.getElementById('totalAgu').textContent  = Math.max(0, 100 - totalConf);
+  document.getElementById('totalSal').textContent   = guests.filter(g => g.food === 'Salgado').length;
+  document.getElementById('totalDoc').textContent   = guests.filter(g => g.food === 'Doce').length;
+  document.getElementById('totalAmbos').textContent = guests.filter(g => g.food === 'Os Dois').length;
   
-  document.getElementById('pct').textContent       = pct + '%';
-  document.getElementById('pBar').style.width      = pct + '%';
+  var pct = Math.min(100, totalConf);
+  document.getElementById('pct').textContent = pct + '%';
+  document.getElementById('pBar').style.width = pct + '%';
 
   var ul = document.getElementById('painelList');
-  ul.innerHTML = '';
-  if (guests.length === 0) {
-    ul.innerHTML = '<li class="empty-msg">Nenhuma confirmacao ainda.</li>';
-  } else {
-    guests.forEach(function(g) {
-      var li = document.createElement('li');
-      li.className = 'guest-item';
-      li.innerHTML =
-        '<div style="display:flex; flex-direction:column; gap:2px;">' +
-            '<span class="guest-name"><strong>' + g.name + '</strong></span>' +
-            '<span style="font-size:11px; color:var(--blue-light);">Traz: ' + (g.food || 'Não informado') + '</span>' +
-        '</div>' +
-        '<span class="guest-badge">' + (g.countLabel||g.count) + ' pess.</span>';
-      ul.appendChild(li);
-    });
-  }
-  document.getElementById('lastUp').textContent = 'Atualizado: ' + new Date().toLocaleTimeString('pt-BR');
+  ul.innerHTML = guests.length ? '' : '<li class="empty-msg">Nenhuma confirmação ainda.</li>';
+  guests.forEach(g => {
+    var li = document.createElement('li');
+    li.className = 'guest-item';
+    li.innerHTML = `<div><strong>${g.name}</strong><br><small>Traz: ${g.food}</small></div><span class="guest-badge">${g.count} pess.</span>`;
+    ul.appendChild(li);
+  });
+  document.getElementById('lastUp').textContent = 'Atualizado às ' + new Date().toLocaleTimeString('pt-BR');
 }
 
 function limparDados() {
-  var senha = prompt('Digite a senha para apagar os dados:');
-  if (senha === null) return;
-  if (senha !== SENHA) { alert('Senha incorreta! Os dados nao foram apagados.'); return; }
-  if (!confirm('Tem certeza? Esta acao apagara TODAS as confirmacoes!')) return;
-  saveGuests([]);
-  atualizarPainel();
-  alert('Dados apagados com sucesso.');
+  if (prompt('Senha para apagar:') === SENHA && confirm('Apagar tudo?')) {
+    saveGuests([]);
+    atualizarPainel();
+  }
 }
 </script>
 </body>

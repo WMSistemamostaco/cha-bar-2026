@@ -62,8 +62,118 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .location-sub{font-size:12px;color:var(--mid);font-style:italic;margin-top:2px;}
 .btn-maps{display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:7px 18px;font-family:'EB Garamond',serif;font-size:13px;letter-spacing:0.08em;background:transparent;border:1px solid var(--blue-light);color:var(--blue-light);border-radius:20px;cursor:pointer;text-decoration:none;transition:background 0.2s,color 0.2s;}
 .btn-maps:hover{background:var(--blue-light);color:white;}
-.verse{font-size:14px;font
-       <div class="form-title">Confirme sua presença</div>
+.verse{font-size:14px;font-style:italic;color:var(--mid);line-height:1.8;max-width:360px;margin:0.5rem auto 0;}
+
+.form-card{background:white;border:1px solid var(--light);border-radius:16px;padding:2rem 1.75rem;margin-bottom:1.5rem;}
+.form-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--dark);text-align:center;margin-bottom:1.5rem;}
+.field{margin-bottom:1.1rem;}
+.field label{display:block;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);margin-bottom:6px;}
+.field input,.field select{width:100%;font-family:'EB Garamond',serif;font-size:16px;padding:10px 14px;border:1px solid var(--light);border-radius:8px;background:var(--cream);color:var(--dark);outline:none;appearance:none;transition:border-color 0.2s;}
+.field input:focus,.field select:focus{border-color:var(--blue-light);}
+.field input::placeholder{color:#9BABB8;}
+.btn-confirm{width:100%;padding:13px;font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:500;letter-spacing:0.1em;background:var(--blue);color:white;border:none;border-radius:8px;cursor:pointer;transition:background 0.2s;margin-top:0.5rem;}
+.btn-confirm:hover{background:var(--blue-light);}
+.btn-confirm:disabled{opacity:0.5;cursor:not-allowed;}
+.status-msg{font-size:13px;color:var(--mid);text-align:center;margin-top:0.75rem;min-height:20px;font-style:italic;}
+
+.success-card{display:none;background:white;border:1px solid var(--light);border-top:4px solid var(--blue);border-radius:16px;padding:2.5rem 1.75rem;text-align:center;margin-bottom:1.5rem;}
+.success-icon{font-size:36px;margin-bottom:1rem;}
+.success-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;color:var(--dark);margin-bottom:0.5rem;}
+.success-msg{font-size:15px;color:var(--mid);line-height:1.7;font-style:italic;}
+
+.painel-btn{width:100%;padding:10px;font-family:'EB Garamond',serif;font-size:13px;letter-spacing:0.1em;background:transparent;border:1px solid var(--light);color:var(--mid);border-radius:8px;cursor:pointer;margin-bottom:1rem;transition:background 0.2s;}
+.painel-btn:hover{background:var(--blue-pale);}
+.painel-overlay{display:none;position:fixed;inset:0;background:rgba(26,37,47,0.7);z-index:1000;align-items:center;justify-content:center;padding:1rem;}
+.painel-overlay.active{display:flex;}
+.painel-modal{background:var(--cream);border-radius:16px;padding:2rem;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;}
+.painel-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;}
+.painel-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--dark);}
+.painel-close{background:none;border:none;font-size:22px;color:var(--mid);cursor:pointer;line-height:1;}
+.lock-screen{text-align:center;padding:1rem 0;}
+.lock-label{font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);margin-bottom:0.75rem;display:block;}
+.lock-input{width:100%;font-size:16px;padding:10px 14px;border:1px solid var(--light);border-radius:8px;background:white;color:var(--dark);outline:none;text-align:center;letter-spacing:0.2em;margin-bottom:0.75rem;}
+.lock-input:focus{border-color:var(--blue-light);}
+.btn-entrar{width:100%;padding:11px;font-family:'Cormorant Garamond',serif;font-size:17px;background:var(--blue);color:white;border:none;border-radius:8px;cursor:pointer;}
+.lock-error{font-size:13px;color:#c0392b;font-style:italic;margin-top:6px;min-height:18px;}
+.stats-row{display:flex;gap:8px;margin-bottom:1.25rem;}
+.stat{flex:1;background:white;border:1px solid var(--light);border-radius:10px;padding:0.8rem 0.5rem;text-align:center;}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;color:var(--blue);display:block;line-height:1;margin-bottom:3px;}
+.stat-lbl{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);}
+.progress-card{background:white;border:1px solid var(--light);border-radius:10px;padding:1rem 1.25rem;margin-bottom:1.25rem;}
+.progress-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.progress-label{font-size:12px;color:var(--mid);}
+.progress-pct{font-size:13px;font-weight:500;color:var(--blue);}
+.progress-bar{height:6px;background:var(--light);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--blue);border-radius:3px;transition:width 0.5s ease;}
+.guest-card{background:white;border:1px solid var(--light);border-radius:10px;padding:1rem 1.25rem;margin-bottom:1rem;}
+.guest-card-title{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);margin-bottom:0.75rem;}
+.guest-list{list-style:none;max-height:240px;overflow-y:auto;}
+.guest-item{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--light);font-size:13px;gap:6px;}
+.guest-item:last-child{border-bottom:none;}
+.guest-name{color:var(--dark);flex:1;}
+.guest-badge{font-size:11px;background:var(--blue-pale);border:1px solid var(--blue-light);color:var(--blue);padding:2px 8px;border-radius:20px;white-space:nowrap;}
+.guest-time{font-size:11px;color:var(--mid);white-space:nowrap;}
+.empty-msg{font-size:13px;color:var(--mid);text-align:center;padding:1.5rem 0;font-style:italic;}
+.btn-refresh{width:100%;padding:10px;font-size:14px;background:var(--blue);color:white;border:none;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:opacity 0.15s;margin-bottom:8px;}
+.btn-refresh:hover{opacity:0.88;}
+.btn-limpar{width:100%;padding:8px;font-size:12px;background:transparent;border:1px solid #c0392b;color:#c0392b;border-radius:8px;cursor:pointer;transition:background 0.2s;}
+.btn-limpar:hover{background:#fff0f0;}
+.last-update{font-size:11px;color:var(--mid);text-align:center;font-style:italic;margin-top:8px;min-height:16px;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+.invite-card, .form-card { animation: fadeUp 0.6s ease forwards; }
+
+@media(max-width:480px){
+    .event-type{font-size:30px;}
+    .container{padding:1rem 1rem 2.5rem;}
+    .invite-card{padding:2rem 1.25rem;}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="event-badge"><span class="badge-pill">🍻 Você está convidado!</span></div>
+
+  <img src="https://wmsistemamostaco.github.io/cha-bar-2026/capa-convite-chabar.jpeg" alt="Amanda e Wilian" class="cover-photo"/>
+
+  <div class="invite-card">
+    <span class="eyelet">Venha celebrar conosco</span>
+    <span class="event-type">Chá Bar</span>
+    <div class="names-row">Amanda <span class="names-amp">&</span> Wilian</div>
+
+    <div class="divider"><div class="div-line"></div><span class="div-star">✦</span><div class="div-line"></div></div>
+
+    <div class="details-grid">
+      <div class="detail">
+        <div class="detail-label">Data</div>
+        <div class="detail-value">11 de julho<br>de 2026</div>
+        <div class="detail-sub">Sábado</div>
+      </div>
+      <div class="detail-sep"></div>
+      <div class="detail">
+        <div class="detail-label">Horário</div>
+        <div class="detail-value">18h30</div>
+        <div class="detail-sub">Pontualmente</div>
+      </div>
+    </div>
+
+    <div class="location-block">
+      <div class="location-label">Local do evento</div>
+      <div class="location-name">Rua Raul Belone, 160</div>
+      <div class="location-sub">Ibiporã — PR</div>
+      <a class="btn-maps" href="https://maps.app.goo.gl/r5E5j3N6Y5Y5Y5Y5A" target="_blank">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Me leve até lá
+      </a>
+    </div>
+
+    <div class="divider"><div class="div-line"></div><span class="div-star">✦</span><div class="div-line"></div></div>
+    <p class="verse">Vem comemorar esse momento especial com a gente! 🥂<br>Traga muita alegria e bom humor!</p>
+  </div>
+
+  <div class="form-card" id="formCard">
+    <div class="form-title">Confirme sua presença</div>
     <div class="field"><label>Seu nome completo</label><input type="text" id="guestName" placeholder="Ex: Maria da Silva" maxlength="80"/></div>
     <div class="field">
       <label>Quantas pessoas virão? (incluindo você)</label>

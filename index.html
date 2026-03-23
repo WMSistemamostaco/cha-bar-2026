@@ -9,7 +9,6 @@
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://wmsistemamostaco.github.io/cha-bar-2026/"/>
 <meta property="og:image" content="https://wmsistemamostaco.github.io/cha-bar-2026/capa-convite-chabar.jpeg"/>
-<meta property="og:image:type" content="image/jpeg"/>
 <meta name="theme-color" content="#1B4F72"/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
 <style>
@@ -18,13 +17,13 @@
   --blue-light:#2E86C1;
   --blue-pale:#D6EAF8;
   --silver:#B0BEC5;
-  --silver-light:#ECEFF1;
   --cream:#F4F6F7;
   --dark:#1A252F;
   --mid:#5D6D7E;
   --light:#D5D8DC;
   --green:#27ae60;
   --orange:#e67e22;
+  --pink:#e91e63;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--cream);font-family:'EB Garamond',Georgia,serif;color:var(--dark);min-height:100vh;overflow-x:hidden;}
@@ -34,17 +33,24 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .event-badge{text-align:center;margin-bottom:1rem;}
 .badge-pill{display:inline-block;background:var(--blue);color:white;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;padding:6px 20px;border-radius:30px;}
 
-.cover-photo{
-    width:100%;
-    height:auto; 
-    border-radius:16px;
-    margin-bottom:1.5rem;
-    display:block;
-    border:2px solid var(--blue-pale);
-}
+.cover-photo{width:100%;height:auto;border-radius:16px;margin-bottom:1.5rem;display:block;border:2px solid var(--blue-pale);}
 
-.invite-card{background:white;border:1px solid var(--light);border-top:4px solid var(--blue);border-radius:16px;padding:2.5rem 2rem;text-align:center;margin-bottom:1.5rem;position:relative;overflow:hidden;}
+/* Card principal com imagem de fundo e transparência */
+.invite-card{
+    background:white;border:1px solid var(--light);border-top:4px solid var(--blue);border-radius:16px;padding:2.5rem 2rem;text-align:center;margin-bottom:1.5rem;position:relative;overflow:hidden;z-index:1;
+}
+.invite-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url('https://wmsistemamostaco.github.io/cha-bar-2026/--chabar.jpeg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+    z-index: -1;
+}
 .invite-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--blue),var(--silver),var(--blue));}
+
 .eyelet{display:inline-block;font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--mid);margin-bottom:1.25rem;}
 .event-type{font-family:'Cormorant Garamond',Georgia,serif;font-size:38px;font-weight:300;color:var(--blue);line-height:1.1;display:block;margin-bottom:0.25rem;}
 .names-row{font-family:'Cormorant Garamond',Georgia,serif;font-size:26px;font-weight:400;color:var(--dark);margin-bottom:0.25rem;}
@@ -52,132 +58,89 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .divider{display:flex;align-items:center;gap:12px;margin:1.25rem auto;max-width:300px;}
 .div-line{flex:1;height:1px;background:linear-gradient(to right,transparent,var(--blue-light),transparent);}
 .div-star{color:var(--blue);font-size:12px;}
+
 .details-grid{display:grid;grid-template-columns:1fr 1px 1fr;gap:0;margin-bottom:1.25rem;}
 .detail-sep{background:var(--light);}
 .detail{padding:0.5rem 1rem;text-align:center;}
 .detail-label{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:4px;}
 .detail-value{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:500;color:var(--dark);line-height:1.3;}
 .detail-sub{font-size:12px;color:var(--mid);font-style:italic;margin-top:2px;}
+
 .location-block{margin-bottom:1rem;}
 .location-label{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:6px;}
 .location-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:500;color:var(--dark);}
 .location-sub{font-size:12px;color:var(--mid);font-style:italic;margin-top:2px;}
 .mimo-text{color:var(--green); font-weight:bold; font-size:16px; margin-top:10px; display:block;}
 
-.btn-maps{display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:7px 18px;font-family:'EB Garamond',serif;font-size:13px;letter-spacing:0.08em;background:transparent;border:1px solid var(--blue-light);color:var(--blue-light);border-radius:20px;cursor:pointer;text-decoration:none;transition:background 0.2s,color 0.2s;}
+.btn-maps{display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:7px 18px;font-family:'EB Garamond',serif;font-size:13px;letter-spacing:0.08em;background:rgba(255,255,255,0.7);border:1px solid var(--blue-light);color:var(--blue-light);border-radius:20px;cursor:pointer;text-decoration:none;transition:all 0.2s;}
 .btn-maps:hover{background:var(--blue-light);color:white;}
 .verse{font-size:14px;font-style:italic;color:var(--mid);line-height:1.8;max-width:360px;margin:0.5rem auto 0;}
 
-.form-card{background:white;border:1px solid var(--light);border-radius:16px;padding:2rem 1.75rem;margin-bottom:1.5rem;}
+/* Formulário */
+.form-card{background:white;border:1px solid var(--light);border-radius:16px;padding:2.2rem 1.75rem;margin-bottom:1.5rem;box-shadow: 0 4px 15px rgba(0,0,0,0.03);}
 .form-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--dark);text-align:center;margin-bottom:1.5rem;}
 .field{margin-bottom:1.1rem;}
 .field label{display:block;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);margin-bottom:6px;}
-.field input,.field select{width:100%;font-family:'EB Garamond',serif;font-size:16px;padding:10px 14px;border:1px solid var(--light);border-radius:8px;background:var(--cream);color:var(--dark);outline:none;appearance:none;transition:border-color 0.2s;}
-.field input:focus,.field select:focus{border-color:var(--blue-light);}
-.field input::placeholder{color:#9BABB8;}
-.btn-confirm{width:100%;padding:13px;font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:500;letter-spacing:0.1em;background:var(--blue);color:white;border:none;border-radius:8px;cursor:pointer;transition:background 0.2s;margin-top:0.5rem;}
+.field input, .field select{width:100%;font-family:'EB Garamond',serif;font-size:16px;padding:12px 14px;border:1px solid var(--light);border-radius:8px;background:var(--cream);color:var(--dark);outline:none;appearance:none;transition: border-color 0.3s;}
+.field input.error, .field select.error {border-color: #c0392b;}
+.btn-confirm{width:100%;padding:14px;font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:500;background:var(--blue);color:white;border:none;border-radius:8px;cursor:pointer;transition:background 0.2s;}
 .btn-confirm:hover{background:var(--blue-light);}
-.btn-confirm:disabled{opacity:0.5;cursor:not-allowed;}
-.status-msg{font-size:13px;color:var(--mid);text-align:center;margin-top:0.75rem;min-height:20px;font-style:italic;}
+.status-msg{font-size:13px;color:#c0392b;text-align:center;margin-top:0.75rem;min-height:20px;font-style:italic;}
 
+/* Sucesso */
 .success-card{display:none;background:white;border:1px solid var(--light);border-top:4px solid var(--blue);border-radius:16px;padding:2.5rem 1.75rem;text-align:center;margin-bottom:1.5rem;}
-.success-icon{font-size:36px;margin-bottom:1rem;}
-.success-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;color:var(--dark);margin-bottom:0.5rem;}
-.success-msg{font-size:15px;color:var(--mid);line-height:1.7;font-style:italic;}
+.success-icon{font-size:40px;margin-bottom:1rem;}
 
-/* Ajuste do Botão do Painel no Rodapé solicitado */
+/* Rodapé e Botão Painel */
 .footer-container{padding: 20px 0 40px; text-align: center;}
 .painel-btn {
-    width: 100%;
-    max-width: 250px;
-    margin: 10px auto;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 12px;
-    font-family: 'EB Garamond', serif;
-    font-size: 14px;
-    letter-spacing: 0.1em;
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid var(--orange);
-    color: var(--orange);
-    border-radius: 30px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    width: 100%; max-width: 250px; margin: 10px auto; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px;
+    font-family: 'EB Garamond', serif; font-size: 14px; letter-spacing: 0.1em; background: rgba(255, 255, 255, 0.9); border: 1px solid var(--orange); color: var(--orange); border-radius: 30px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
-.painel-btn:hover {
-    background: var(--orange);
-    color: white;
-    box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
-}
+.painel-btn:hover {background: var(--orange); color: white; box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);}
 
+/* Modal Painel */
 .painel-overlay{display:none;position:fixed;inset:0;background:rgba(26,37,47,0.7);z-index:1000;align-items:center;justify-content:center;padding:1rem;}
 .painel-overlay.active{display:flex;}
 .painel-modal{background:var(--cream);border-radius:16px;padding:2rem;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;}
 .painel-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;}
 .painel-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--dark);}
-.painel-close{background:none;border:none;font-size:22px;color:var(--mid);cursor:pointer;line-height:1;}
+.painel-close{background:none;border:none;font-size:26px;color:var(--mid);cursor:pointer;}
 
-.lock-screen{text-align:center;padding:1rem 0;}
-.lock-label{font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);margin-bottom:0.75rem;display:block;}
-.lock-input{width:100%;font-size:16px;padding:10px 14px;border:1px solid var(--light);border-radius:8px;background:white;color:var(--dark);outline:none;text-align:center;letter-spacing:0.2em;margin-bottom:0.75rem;}
-.lock-input:focus{border-color:var(--blue-light);}
-.btn-entrar{width:100%;padding:11px;font-family:'Cormorant Garamond',serif;font-size:17px;background:var(--blue);color:white;border:none;border-radius:8px;cursor:pointer;}
-.lock-error{font-size:13px;color:#c0392b;font-style:italic;margin-top:6px;min-height:18px;}
-
-/* Contadores Internos do Painel */
 .stats-row{display:flex; flex-wrap: wrap; gap:8px; margin-bottom: 1rem;}
-.stat{flex: 1 1 calc(33% - 8px); background:white; border:1px solid var(--light); border-radius:10px; padding:0.6rem 0.3rem; text-align:center;}
+.stat{flex: 1 1 calc(33% - 8px); background:white; border:1px solid var(--light); border-radius:10px; padding:0.8rem 0.3rem; text-align:center;}
 .stat-num{font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:400; color:var(--blue); display:block; line-height:1; margin-bottom:3px;}
 .stat-lbl{font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:var(--mid);}
-.stat-food{border-bottom: 3px solid var(--orange);}
+/* Cores dos contadores de comida */
+.stat-salgado { border-bottom: 3px solid var(--blue-light); }
+.stat-doce { border-bottom: 3px solid var(--pink); }
+.stat-ambos { border-bottom: 3px solid var(--orange); }
 
-.progress-card{background:white;border:1px solid var(--light);border-radius:10px;padding:1rem 1.25rem;margin-bottom:1.25rem;}
-.progress-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
-.progress-label{font-size:12px;color:var(--mid);}
-.progress-pct{font-size:13px;font-weight:500;color:var(--blue);}
-.progress-bar{height:6px;background:var(--light);border-radius:3px;overflow:hidden;}
-.progress-fill{height:100%;background:var(--blue);border-radius:3px;transition:width 0.5s ease;}
-.guest-card{background:white;border:1px solid var(--light);border-radius:10px;padding:1rem 1.25rem;margin-bottom:1rem;}
-.guest-card-title{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);margin-bottom:0.75rem;}
+.guest-card{background:white;border:1px solid var(--light);border-radius:10px;padding:1rem;margin-bottom:1rem;}
 .guest-list{list-style:none;max-height:240px;overflow-y:auto;}
-.guest-item{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--light);font-size:13px;gap:6px;}
-.guest-item:last-child{border-bottom:none;}
-.guest-name{color:var(--dark);flex:1;}
-.guest-badge{font-size:11px;background:var(--blue-pale);border:1px solid var(--blue-light);color:var(--blue);padding:2px 8px;border-radius:20px;white-space:nowrap;}
-.btn-refresh{width:100%;padding:10px;font-size:14px;background:var(--blue);color:white;border:none;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:opacity 0.15s;margin-bottom:8px;}
-.btn-refresh:hover{opacity:0.88;}
-.btn-limpar{width:100%;padding:8px;font-size:12px;background:transparent;border:1px solid #c0392b;color:#c0392b;border-radius:8px;cursor:pointer;transition:background 0.2s;}
-.btn-limpar:hover{background:#fff0f0;}
-.last-update{font-size:11px;color:var(--mid);text-align:center;font-style:italic;margin-top:8px;min-height:16px;}
+.guest-item{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--light);font-size:13px;}
+.guest-badge{font-size:11px;background:var(--blue-pale);border:1px solid var(--blue-light);color:var(--blue);padding:2px 8px;border-radius:20px;}
 
-@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
-.invite-card, .form-card { animation: fadeUp 0.6s ease forwards; }
+.lock-screen{text-align:center;padding:1rem 0;}
+.lock-input{width:100%;font-size:18px;padding:12px;border:1px solid var(--light);border-radius:8px;text-align:center;letter-spacing:0.3em;margin-bottom:1rem;}
+.btn-entrar{width:100%;padding:12px;background:var(--blue);color:white;border:none;border-radius:8px;cursor:pointer;}
 
 @media(max-width:480px){
-    .event-type{font-size:30px;}
-    .container{padding:1rem 1rem 2.5rem;}
-    .invite-card{padding:2rem 1.25rem;}
+    .event-type{font-size:32px;}
     .stat{flex: 1 1 calc(50% - 8px);}
 }
 </style>
 </head>
 <body>
 <div class="container">
-
   <div class="event-badge"><span class="badge-pill">🍻 Você está convidado!</span></div>
-
   <img src="https://wmsistemamostaco.github.io/cha-bar-2026/capa-convite-chabar.jpeg" alt="Amanda e Wilian" class="cover-photo"/>
 
   <div class="invite-card">
     <span class="eyelet">Venha celebrar conosco</span>
     <span class="event-type">Chá Bar</span>
     <div class="names-row">Amanda <span class="names-amp">&</span> Wilian</div>
-
     <div class="divider"><div class="div-line"></div><span class="div-star">✦</span><div class="div-line"></div></div>
-
     <div class="details-grid">
       <div class="detail">
         <div class="detail-label">Data</div>
@@ -191,27 +154,28 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
         <div class="detail-sub">Pontualmente</div>
       </div>
     </div>
-
     <div class="location-block">
       <div class="location-label">Local do evento</div>
       <div class="location-name">Rua Raul Belone, 160</div>
       <div class="location-sub">Ibiporã — PR</div>
-      <a class="btn-maps" href="https://www.google.com/maps/search/?api=1&query=-23.2713,-51.0504" target="_blank">
+      <a class="btn-maps" href="https://maps.app.goo.gl/9yvWk6k9f8nZ6fWf8" target="_blank">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
         Me leve até lá
       </a>
       <span class="mimo-text">🎁 Tragam mimos para os Noivos!</span>
     </div>
-
     <div class="divider"><div class="div-line"></div><span class="div-star">✦</span><div class="div-line"></div></div>
     <p class="verse">Vem comemorar esse momento especial com a gente! 🥂<br>Traga muita alegria e bom humor!</p>
   </div>
 
   <div class="form-card" id="formCard">
     <div class="form-title">Confirme sua presença</div>
-    <div class="field"><label>Seu nome completo</label><input type="text" id="guestName" placeholder="Ex: Maria da Silva" maxlength="80"/></div>
     <div class="field">
-      <label>Quantas pessoas virão? (incluindo você)</label>
+      <label>Seu nome completo</label>
+      <input type="text" id="guestName" placeholder="Ex: Maria da Silva" maxlength="80"/>
+    </div>
+    <div class="field">
+      <label>Quantas pessoas virão?</label>
       <select id="guestCount">
         <option value="1">1 pessoa — só eu</option>
         <option value="2">2 pessoas</option>
@@ -236,51 +200,46 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 
   <div class="success-card" id="successCard">
     <div class="success-icon">🍻</div>
-    <div class="success-title" id="successTitle">Presença confirmada!</div>
+    <div class="success-title" id="successTitle">Tudo certo!</div>
     <div class="success-msg" id="successMsg"></div>
   </div>
 
   <div class="footer-container">
       <button class="painel-btn" onclick="abrirPainel()">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
           Painel dos Noivos
       </button>
   </div>
-
 </div>
 
-<div class="painel-overlay" id="painelOverlay" onclick="fecharPainelFora(event)">
+<div class="painel-overlay" id="painelOverlay" onclick="if(event.target===this)fecharPainel()">
   <div class="painel-modal">
     <div class="painel-header">
       <span class="painel-title">Painel dos Noivos</span>
       <button class="painel-close" onclick="fecharPainel()">×</button>
     </div>
+    
     <div id="lockScreen" class="lock-screen">
-      <span class="lock-label">Acesso restrito</span>
-      <input type="password" class="lock-input" id="senhaInput" placeholder="••••••" maxlength="20" onkeydown="if(event.key==='Enter')verificarSenha()"/>
+      <input type="password" class="lock-input" id="senhaInput" placeholder="••••••" onkeydown="if(event.key==='Enter')verificarSenha()"/>
       <button class="btn-entrar" onclick="verificarSenha()">Entrar</button>
-      <div class="lock-error" id="lockError"></div>
+      <div id="lockError" style="color:#c0392b; font-size:13px; margin-top:10px;"></div>
     </div>
+
     <div id="painelContent" style="display:none;">
       <div class="stats-row">
         <div class="stat"><span class="stat-num" id="totalConf">0</span><span class="stat-lbl">Confirmados</span></div>
-        <div class="stat"><span class="stat-num" id="totalPess">0</span><span class="stat-lbl">Pessoas</span></div>
+        <div class="stat"><span class="stat-num" id="totalPess">0</span><span class="stat-lbl">Total Pessoas</span></div>
         <div class="stat"><span class="stat-num" id="totalAgu">100</span><span class="stat-lbl">Restantes</span></div>
-        <div class="stat stat-food"><span class="stat-num" id="totalSal">0</span><span class="stat-lbl">Salgados</span></div>
-        <div class="stat stat-food"><span class="stat-num" id="totalDoc">0</span><span class="stat-lbl">Doces</span></div>
-        <div class="stat stat-food"><span class="stat-num" id="totalAmbos">0</span><span class="stat-lbl">Ambos</span></div>
-      </div>
-      <div class="progress-card">
-        <div class="progress-header"><span class="progress-label">Progresso — 100 convidados</span><span class="progress-pct" id="pct">0%</span></div>
-        <div class="progress-bar"><div class="progress-fill" id="pBar" style="width:0%"></div></div>
+        <div class="stat stat-salgado"><span class="stat-num" id="totalSal">0</span><span class="stat-lbl">Salgados</span></div>
+        <div class="stat stat-doce"><span class="stat-num" id="totalDoc">0</span><span class="stat-lbl">Doces</span></div>
+        <div class="stat stat-ambos"><span class="stat-num" id="totalAmbos">0</span><span class="stat-lbl">Os Dois</span></div>
       </div>
       <div class="guest-card">
-        <div class="guest-card-title">Lista de confirmações</div>
-        <ul class="guest-list" id="painelList"><li class="empty-msg">Nenhuma confirmação ainda.</li></ul>
+        <ul class="guest-list" id="painelList"></ul>
       </div>
-      <button class="btn-refresh" onclick="atualizarPainel()">Atualizar lista</button>
-      <button class="btn-limpar" onclick="limparDados()">Limpar todos os dados</button>
-      <div class="last-update" id="lastUp">—</div>
+      <button class="btn-entrar" style="background:var(--blue-light); margin-bottom:8px;" onclick="atualizarPainel()">Atualizar Lista</button>
+      <button class="btn-entrar" style="background:#c0392b;" onclick="limparDados()">Limpar Tudo</button>
+      <div id="lastUp" style="font-size:11px; text-align:center; margin-top:10px; color:var(--mid);"></div>
     </div>
   </div>
 </div>
@@ -288,58 +247,51 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
 emailjs.init('h33oxWzwErwi8kwUF');
-var SERVICE   = 'service_5nd34jt';
-var TEMPLATE  = 'template_dcxp758';
-var EMAILS    = ['mostacowilian28@gmail.com', 'amanda.m_moreira@hotmail.com'];
-var SENHA     = 'amanda2026';
-var KEY       = 'chabar_aw2026_v1';
+const SERVICE = 'service_5nd34jt', TEMPLATE = 'template_dcxp758', SENHA = 'amanda2026', KEY = 'chabar_aw2026_v1';
+const EMAILS = ['mostacowilian28@gmail.com', 'amanda.m_moreira@hotmail.com'];
 
-function getGuests() { try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch(e) { return []; } }
-function saveGuests(list) { try { localStorage.setItem(KEY, JSON.stringify(list)); } catch(e) {} }
+function getGuests() { return JSON.parse(localStorage.getItem(KEY) || '[]'); }
+function saveGuests(l) { localStorage.setItem(KEY, JSON.stringify(l)); }
 
 async function confirmar() {
-  var name = document.getElementById('guestName').value.trim();
-  var countVal = document.getElementById('guestCount').value;
-  var food = document.getElementById('foodType').value;
-  
-  if (!name) { document.getElementById('statusMsg').textContent = 'Por favor, informe seu nome.'; return; }
-  if (!food) { document.getElementById('statusMsg').textContent = 'Por favor, selecione o que vai trazer.'; return; }
+  const nameInput = document.getElementById('guestName');
+  const foodSelect = document.getElementById('foodType');
+  const countSelect = document.getElementById('guestCount');
+  const statusMsg = document.getElementById('statusMsg');
 
-  var btn = document.getElementById('confirmBtn');
-  btn.disabled = true; btn.textContent = 'Enviando...';
-  
-  var now = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
-  var countNum = parseInt(countVal);
-  var guests = getGuests();
-  guests.unshift({ name: name, count: countNum, food: food, time: now });
+  // Resetar estilos de erro
+  nameInput.classList.remove('error');
+  foodSelect.classList.remove('error');
+  statusMsg.textContent = '';
+
+  let hasError = false;
+  if (!nameInput.value.trim()) { nameInput.classList.add('error'); hasError = true; }
+  if (!foodSelect.value) { foodSelect.classList.add('error'); hasError = true; }
+
+  if (hasError) { statusMsg.textContent = 'Por favor, preencha os campos destacados.'; return; }
+
+  const btn = document.getElementById('confirmBtn');
+  btn.disabled = true; btn.textContent = 'Confirmando...';
+
+  const now = new Date().toLocaleString('pt-BR');
+  const guests = getGuests();
+  guests.unshift({ name: nameInput.value.trim(), count: parseInt(countSelect.value), food: foodSelect.value, time: now });
   saveGuests(guests);
 
   try {
-    EMAILS.forEach(email => {
-        emailjs.send(SERVICE, TEMPLATE, {
-          to_email: email,
-          guest_name: name,
-          guest_count: countVal,
-          confirmed_at: now,
-          subject: '[Chá Bar] ' + name + ' confirmou!',
-          message: 'Nome: ' + name + '\nPessoas: ' + countVal + '\nTrará: ' + food + '\nHora: ' + now
-        });
-    });
+    for (let email of EMAILS) {
+      await emailjs.send(SERVICE, TEMPLATE, { to_email: email, guest_name: nameInput.value.trim(), guest_count: countSelect.value, confirmed_at: now, message: `Trará: ${foodSelect.value}` });
+    }
   } catch(e) {}
 
   document.getElementById('formCard').style.display = 'none';
-  document.getElementById('successCard').style.display = 'block';
-  document.getElementById('successTitle').textContent = 'Obrigado, ' + name.split(' ')[0] + '!';
-  document.getElementById('successMsg').innerHTML = 'Confirmado para <strong>' + countVal + ' pessoa(s)</strong>.<br>Combinado o envio de: ' + food + '. 🍻';
+  const success = document.getElementById('successCard');
+  success.style.display = 'block';
+  document.getElementById('successMsg').innerHTML = `<strong>${nameInput.value.trim()}</strong>, sua presença foi confirmada!<br>Combinado que você trará: <strong>${foodSelect.value}</strong>. 🥂`;
 }
 
-function abrirPainel() {
-  document.getElementById('painelOverlay').classList.add('active');
-  document.getElementById('lockScreen').style.display = 'block';
-  document.getElementById('painelContent').style.display = 'none';
-}
+function abrirPainel() { document.getElementById('painelOverlay').classList.add('active'); }
 function fecharPainel() { document.getElementById('painelOverlay').classList.remove('active'); }
-function fecharPainelFora(e) { if (e.target === document.getElementById('painelOverlay')) fecharPainel(); }
 
 function verificarSenha() {
   if (document.getElementById('senhaInput').value === SENHA) {
@@ -350,37 +302,26 @@ function verificarSenha() {
 }
 
 function atualizarPainel() {
-  var guests = getGuests();
-  var totalConf = guests.length;
-  var totalPess = guests.reduce((s,g) => s + (g.count||1), 0);
-  
-  document.getElementById('totalConf').textContent = totalConf;
-  document.getElementById('totalPess').textContent = totalPess;
-  document.getElementById('totalAgu').textContent  = Math.max(0, 100 - totalConf);
-  document.getElementById('totalSal').textContent   = guests.filter(g => g.food === 'Salgado').length;
-  document.getElementById('totalDoc').textContent   = guests.filter(g => g.food === 'Doce').length;
+  const guests = getGuests();
+  document.getElementById('totalConf').textContent = guests.length;
+  document.getElementById('totalPess').textContent = guests.reduce((s,g) => s + g.count, 0);
+  document.getElementById('totalSal').textContent = guests.filter(g => g.food === 'Salgado').length;
+  document.getElementById('totalDoc').textContent = guests.filter(g => g.food === 'Doce').length;
   document.getElementById('totalAmbos').textContent = guests.filter(g => g.food === 'Os Dois').length;
   
-  var pct = Math.min(100, totalConf);
-  document.getElementById('pct').textContent = pct + '%';
-  document.getElementById('pBar').style.width = pct + '%';
-
-  var ul = document.getElementById('painelList');
-  ul.innerHTML = guests.length ? '' : '<li class="empty-msg">Nenhuma confirmação ainda.</li>';
+  const ul = document.getElementById('painelList');
+  ul.innerHTML = guests.length ? '' : '<li style="text-align:center; color:gray;">Sem confirmações.</li>';
   guests.forEach(g => {
-    var li = document.createElement('li');
+    const li = document.createElement('li');
     li.className = 'guest-item';
-    li.innerHTML = `<div><strong>${g.name}</strong><br><small>Traz: ${g.food}</small></div><span class="guest-badge">${g.count} pess.</span>`;
+    li.innerHTML = `<div><strong>${g.name}</strong><br><small>${g.food}</small></div><span class="guest-badge">${g.count}p</span>`;
     ul.appendChild(li);
   });
-  document.getElementById('lastUp').textContent = 'Atualizado às ' + new Date().toLocaleTimeString('pt-BR');
+  document.getElementById('lastUp').textContent = 'Última atualização: ' + new Date().toLocaleTimeString();
 }
 
 function limparDados() {
-  if (prompt('Senha para apagar:') === SENHA && confirm('Apagar tudo?')) {
-    saveGuests([]);
-    atualizarPainel();
-  }
+  if (confirm('Deseja REALMENTE apagar todas as confirmações?')) { saveGuests([]); atualizarPainel(); }
 }
 </script>
 </body>

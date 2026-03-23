@@ -4,109 +4,382 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Chá Bar — Amanda & Wilian</title>
+<meta property="og:title" content="Chá Bar — Amanda & Wilian 🍻"/>
+<meta property="og:description" content="11 de julho de 2026 • 18h30 • Rua Raul Belone 160, Ibiporã-PR"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://wmsistemamostaco.github.io/cha-bar-2026/"/>
+<meta property="og:image" content="https://wmsistemamostaco.github.io/cha-bar-2026/capa-convite-chabar.jpeg"/>
+<meta property="og:image:type" content="image/jpeg"/>
+<meta name="theme-color" content="#1B4F72"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
 <style>
-:root{ --primary:#1a4a6e; --bg:#f8f9fa; --text:#333; }
-*{box-sizing:border-box; margin:0; padding:0;}
-body{ background:var(--bg); font-family:'Helvetica Neue', Arial, sans-serif; color:var(--text); line-height:1.6; }
-.container{ max-width:500px; margin:0 auto; padding:2rem 1rem; }
-.card{ background:white; border-radius:12px; padding:2rem; box-shadow:0 4px 15px rgba(0,0,0,0.05); text-align:center; margin-bottom:1.5rem; }
-.names{ font-size:24px; font-weight:bold; margin-bottom:1rem; color:var(--primary); }
-.info-box{ margin:1.5rem 0; padding:1rem; border-top:1px solid #eee; border-bottom:1px solid #eee; }
-.mimo-msg{ margin-top:10px; color:#28a745; font-weight:bold; font-size:16px; }
-.field{ margin-bottom:1.2rem; text-align:left; }
-.field label{ display:block; font-size:12px; font-weight:bold; margin-bottom:5px; color:#666; text-transform:uppercase; }
-.field input, .field select{ width:100%; padding:12px; border:1px solid #ddd; border-radius:6px; font-size:16px; }
-.btn-confirm{ width:100%; padding:15px; background:var(--primary); color:white; border:none; border-radius:6px; font-size:18px; font-weight:bold; cursor:pointer; }
-.painel-btn{ background:none; border:none; color:#aaa; font-size:12px; cursor:pointer; width:100%; margin-top:10px; }
+:root{
+  --blue:#1B4F72;
+  --blue-light:#2E86C1;
+  --blue-pale:#D6EAF8;
+  --silver:#B0BEC5;
+  --silver-light:#ECEFF1;
+  --cream:#F4F6F7;
+  --dark:#1A252F;
+  --mid:#5D6D7E;
+  --light:#D5D8DC;
+  --green:#27ae60;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--cream);font-family:'EB Garamond',Georgia,serif;color:var(--dark);min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(circle at 15% 15%,rgba(27,79,114,0.07) 0%,transparent 50%),radial-gradient(circle at 85% 85%,rgba(176,190,197,0.08) 0%,transparent 50%);pointer-events:none;z-index:0;}
+.container{max-width:560px;margin:0 auto;padding:2rem 1.25rem 3rem;position:relative;z-index:1;}
+
+.event-badge{text-align:center;margin-bottom:1rem;}
+.badge-pill{display:inline-block;background:var(--blue);color:white;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;padding:6px 20px;border-radius:30px;}
+
+.cover-photo{
+    width:100%;
+    height:auto; 
+    border-radius:16px;
+    margin-bottom:1.5rem;
+    display:block;
+    border:2px solid var(--blue-pale);
+}
+
+.invite-card{background:white;border:1px solid var(--light);border-top:4px solid var(--blue);border-radius:16px;padding:2.5rem 2rem;text-align:center;margin-bottom:1.5rem;position:relative;overflow:hidden;}
+.invite-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--blue),var(--silver),var(--blue));}
+.eyelet{display:inline-block;font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--mid);margin-bottom:1.25rem;}
+.event-type{font-family:'Cormorant Garamond',Georgia,serif;font-size:38px;font-weight:300;color:var(--blue);line-height:1.1;display:block;margin-bottom:0.25rem;}
+.names-row{font-family:'Cormorant Garamond',Georgia,serif;font-size:26px;font-weight:400;color:var(--dark);margin-bottom:0.25rem;}
+.names-amp{color:var(--blue-light);font-style:italic;}
+.divider{display:flex;align-items:center;gap:12px;margin:1.25rem auto;max-width:300px;}
+.div-line{flex:1;height:1px;background:linear-gradient(to right,transparent,var(--blue-light),transparent);}
+.div-star{color:var(--blue);font-size:12px;}
+.details-grid{display:grid;grid-template-columns:1fr 1px 1fr;gap:0;margin-bottom:1.25rem;}
+.detail-sep{background:var(--light);}
+.detail{padding:0.5rem 1rem;text-align:center;}
+.detail-label{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:4px;}
+.detail-value{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:500;color:var(--dark);line-height:1.3;}
+.detail-sub{font-size:12px;color:var(--mid);font-style:italic;margin-top:2px;}
+.location-block{margin-bottom:1rem;}
+.location-label{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:6px;}
+.location-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:500;color:var(--dark);}
+.location-sub{font-size:12px;color:var(--mid);font-style:italic;margin-top:2px;}
+.mimo-text{color:var(--green); font-weight:bold; font-size:16px; margin-top:10px; display:block;}
+
+.btn-maps{display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:7px 18px;font-family:'EB Garamond',serif;font-size:13px;letter-spacing:0.08em;background:transparent;border:1px solid var(--blue-light);color:var(--blue-light);border-radius:20px;cursor:pointer;text-decoration:none;transition:background 0.2s,color 0.2s;}
+.btn-maps:hover{background:var(--blue-light);color:white;}
+.verse{font-size:14px;font-style:italic;color:var(--mid);line-height:1.8;max-width:360px;margin:0.5rem auto 0;}
+
+.form-card{background:white;border:1px solid var(--light);border-radius:16px;padding:2rem 1.75rem;margin-bottom:1.5rem;}
+.form-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--dark);text-align:center;margin-bottom:1.5rem;}
+.field{margin-bottom:1.1rem;}
+.field label{display:block;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);margin-bottom:6px;}
+.field input,.field select{width:100%;font-family:'EB Garamond',serif;font-size:16px;padding:10px 14px;border:1px solid var(--light);border-radius:8px;background:var(--cream);color:var(--dark);outline:none;appearance:none;transition:border-color 0.2s;}
+.field input:focus,.field select:focus{border-color:var(--blue-light);}
+.field input::placeholder{color:#9BABB8;}
+.btn-confirm{width:100%;padding:13px;font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:500;letter-spacing:0.1em;background:var(--blue);color:white;border:none;border-radius:8px;cursor:pointer;transition:background 0.2s;margin-top:0.5rem;}
+.btn-confirm:hover{background:var(--blue-light);}
+.btn-confirm:disabled{opacity:0.5;cursor:not-allowed;}
+.status-msg{font-size:13px;color:var(--mid);text-align:center;margin-top:0.75rem;min-height:20px;font-style:italic;}
+
+.success-card{display:none;background:white;border:1px solid var(--light);border-top:4px solid var(--blue);border-radius:16px;padding:2.5rem 1.75rem;text-align:center;margin-bottom:1.5rem;}
+.success-icon{font-size:36px;margin-bottom:1rem;}
+.success-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;color:var(--dark);margin-bottom:0.5rem;}
+.success-msg{font-size:15px;color:var(--mid);line-height:1.7;font-style:italic;}
+
+.painel-btn{width:100%;padding:10px;font-family:'EB Garamond',serif;font-size:13px;letter-spacing:0.1em;background:transparent;border:1px solid var(--light);color:var(--mid);border-radius:8px;cursor:pointer;margin-bottom:1rem;transition:background 0.2s;}
+.painel-btn:hover{background:var(--blue-pale);}
+.painel-overlay{display:none;position:fixed;inset:0;background:rgba(26,37,47,0.7);z-index:1000;align-items:center;justify-content:center;padding:1rem;}
+.painel-overlay.active{display:flex;}
+.painel-modal{background:var(--cream);border-radius:16px;padding:2rem;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;}
+.painel-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;}
+.painel-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--dark);}
+.painel-close{background:none;border:none;font-size:22px;color:var(--mid);cursor:pointer;line-height:1;}
+.lock-screen{text-align:center;padding:1rem 0;}
+.lock-label{font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);margin-bottom:0.75rem;display:block;}
+.lock-input{width:100%;font-size:16px;padding:10px 14px;border:1px solid var(--light);border-radius:8px;background:white;color:var(--dark);outline:none;text-align:center;letter-spacing:0.2em;margin-bottom:0.75rem;}
+.lock-input:focus{border-color:var(--blue-light);}
+.btn-entrar{width:100%;padding:11px;font-family:'Cormorant Garamond',serif;font-size:17px;background:var(--blue);color:white;border:none;border-radius:8px;cursor:pointer;}
+.lock-error{font-size:13px;color:#c0392b;font-style:italic;margin-top:6px;min-height:18px;}
+.stats-row{display:flex;gap:8px;margin-bottom:1.25rem;}
+.stat{flex:1;background:white;border:1px solid var(--light);border-radius:10px;padding:0.8rem 0.5rem;text-align:center;}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;color:var(--blue);display:block;line-height:1;margin-bottom:3px;}
+.stat-lbl{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);}
+.progress-card{background:white;border:1px solid var(--light);border-radius:10px;padding:1rem 1.25rem;margin-bottom:1.25rem;}
+.progress-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.progress-label{font-size:12px;color:var(--mid);}
+.progress-pct{font-size:13px;font-weight:500;color:var(--blue);}
+.progress-bar{height:6px;background:var(--light);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--blue);border-radius:3px;transition:width 0.5s ease;}
+.guest-card{background:white;border:1px solid var(--light);border-radius:10px;padding:1rem 1.25rem;margin-bottom:1rem;}
+.guest-card-title{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);margin-bottom:0.75rem;}
+.guest-list{list-style:none;max-height:240px;overflow-y:auto;}
+.guest-item{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--light);font-size:13px;gap:6px;}
+.guest-item:last-child{border-bottom:none;}
+.guest-name{color:var(--dark);flex:1;}
+.guest-badge{font-size:11px;background:var(--blue-pale);border:1px solid var(--blue-light);color:var(--blue);padding:2px 8px;border-radius:20px;white-space:nowrap;}
+.food-badge{font-size:11px;background:var(--silver-light);border:1px solid var(--silver);color:var(--dark);padding:2px 8px;border-radius:20px;white-space:nowrap;}
+.guest-time{font-size:11px;color:var(--mid);white-space:nowrap;}
+.empty-msg{font-size:13px;color:var(--mid);text-align:center;padding:1.5rem 0;font-style:italic;}
+.btn-refresh{width:100%;padding:10px;font-size:14px;background:var(--blue);color:white;border:none;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:opacity 0.15s;margin-bottom:8px;}
+.btn-refresh:hover{opacity:0.88;}
+.btn-limpar{width:100%;padding:8px;font-size:12px;background:transparent;border:1px solid #c0392b;color:#c0392b;border-radius:8px;cursor:pointer;transition:background 0.2s;}
+.btn-limpar:hover{background:#fff0f0;}
+.last-update{font-size:11px;color:var(--mid);text-align:center;font-style:italic;margin-top:8px;min-height:16px;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+.invite-card, .form-card { animation: fadeUp 0.6s ease forwards; }
+
+@media(max-width:480px){
+    .event-type{font-size:30px;}
+    .container{padding:1rem 1rem 2.5rem;}
+    .invite-card{padding:2rem 1.25rem;}
+}
 </style>
 </head>
 <body>
-
 <div class="container">
-  <div class="card">
-    <div style="font-size:14px; text-transform:uppercase; letter-spacing:2px; color:#888;">Chá Bar</div>
-    <div class="names">Amanda & Wilian</div>
-    
-    <div class="info-box">
-        <p><strong>11 de Julho de 2026 às 18h30</strong></p>
-        <p>Rua Raul Belone, 160 - Ibiporã/PR</p>
-        <p class="mimo-msg">🎁 Tragam mimos para os Noivos!</p>
+
+  <div class="event-badge"><span class="badge-pill">🍻 Você está convidado!</span></div>
+
+  <img src="https://wmsistemamostaco.github.io/cha-bar-2026/capa-convite-chabar.jpeg" alt="Amanda e Wilian" class="cover-photo"/>
+
+  <div class="invite-card">
+    <span class="eyelet">Venha celebrar conosco</span>
+    <span class="event-type">Chá Bar</span>
+    <div class="names-row">Amanda <span class="names-amp">&</span> Wilian</div>
+
+    <div class="divider"><div class="div-line"></div><span class="div-star">✦</span><div class="div-line"></div></div>
+
+    <div class="details-grid">
+      <div class="detail">
+        <div class="detail-label">Data</div>
+        <div class="detail-value">11 de julho<br>de 2026</div>
+        <div class="detail-sub">Sábado</div>
+      </div>
+      <div class="detail-sep"></div>
+      <div class="detail">
+        <div class="detail-label">Horário</div>
+        <div class="detail-value">18h30</div>
+        <div class="detail-sub">Pontualmente</div>
+      </div>
     </div>
 
-    <p style="font-size:14px; color:#666;">Vem comemorar esse momento especial com a gente!<br>Traga muita alegria e bom humor!</p>
+    <div class="location-block">
+      <div class="location-label">Local do evento</div>
+      <div class="location-name">Rua Raul Belone, 160</div>
+      <div class="location-sub">Ibiporã — PR</div>
+      <a class="btn-maps" href="https://www.google.com/maps/search/?api=1&query=-23.2713,-51.0504" target="_blank">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Me leve até lá
+      </a>
+      <span class="mimo-text">🎁 Tragam mimos para os Noivos!</span>
+    </div>
+
+    <div class="divider"><div class="div-line"></div><span class="div-star">✦</span><div class="div-line"></div></div>
+    <p class="verse">Vem comemorar esse momento especial com a gente! 🥂<br>Traga muita alegria e bom humor!</p>
   </div>
 
-  <div class="card" id="formCard">
+  <div class="form-card" id="formCard">
+    <div class="form-title">Confirme sua presença</div>
+    <div class="field"><label>Seu nome completo</label><input type="text" id="guestName" placeholder="Ex: Maria da Silva" maxlength="80"/></div>
     <div class="field">
-        <label>Seu Nome Completo</label>
-        <input type="text" id="guestName" placeholder="Ex: Maria da Silva">
+      <label>Quantas pessoas virão? (incluindo você)</label>
+      <select id="guestCount">
+        <option value="1">1 pessoa — só eu</option>
+        <option value="2">2 pessoas</option>
+        <option value="3">3 pessoas</option>
+        <option value="4">4 pessoas</option>
+        <option value="5">5 pessoas</option>
+        <option value="6">6 pessoas ou mais</option>
+      </select>
     </div>
     <div class="field">
-        <label>Quantas pessoas virão?</label>
-        <select id="guestCount">
-            <option value="1">1 pessoa</option>
-            <option value="2">2 pessoas</option>
-            <option value="3">3 pessoas</option>
-            <option value="4">4 pessoas</option>
-        </select>
+      <label>O que vai trazer para comer?</label>
+      <select id="foodType">
+        <option value="Salgado">Vou levar um Salgado</option>
+        <option value="Doce">Vou levar um Doce</option>
+        <option value="Os Dois">Levo os dois!</option>
+      </select>
     </div>
-    <div class="field">
-        <label>O que vai trazer para comer?</label>
-        <select id="foodType">
-            <option value="Salgado">Vou levar um Salgado</option>
-            <option value="Doce">Vou levar um Doce</option>
-            <option value="Os Dois">Levo os dois!</option>
-        </select>
-    </div>
-    <button class="btn-confirm" onclick="confirmar()">Confirmar Presença</button>
+    <button class="btn-confirm" id="confirmBtn" onclick="confirmar()">Confirmar Presença</button>
+    <div class="status-msg" id="statusMsg"></div>
   </div>
 
-  <div class="card" id="successCard" style="display:none;">
-    <h2 style="color:#28a745;">Presença Confirmada! 🎉</h2>
-    <p>Mal podemos esperar para te ver lá!</p>
+  <div class="success-card" id="successCard">
+    <div class="success-icon">🍻</div>
+    <div class="success-title" id="successTitle">Presença confirmada!</div>
+    <div class="success-msg" id="successMsg"></div>
   </div>
 
-  <button class="painel-btn" onclick="abrirPainel()">⚙ Painel dos Noivos</button>
+  <button class="painel-btn" onclick="abrirPainel()">⚙ Painel dos noivos</button>
+
+</div>
+
+<div class="painel-overlay" id="painelOverlay" onclick="fecharPainelFora(event)">
+  <div class="painel-modal">
+    <div class="painel-header">
+      <span class="painel-title">Painel dos Noivos</span>
+      <button class="painel-close" onclick="fecharPainel()">×</button>
+    </div>
+    <div id="lockScreen" class="lock-screen">
+      <span class="lock-label">Acesso restrito</span>
+      <input type="password" class="lock-input" id="senhaInput" placeholder="••••••" maxlength="20" onkeydown="if(event.key==='Enter')verificarSenha()"/>
+      <button class="btn-entrar" onclick="verificarSenha()">Entrar</button>
+      <div class="lock-error" id="lockError"></div>
+    </div>
+    <div id="painelContent" style="display:none;">
+      <div class="stats-row">
+        <div class="stat"><span class="stat-num" id="totalConf">0</span><span class="stat-lbl">Confirmados</span></div>
+        <div class="stat"><span class="stat-num" id="totalPess">0</span><span class="stat-lbl">Pessoas</span></div>
+        <div class="stat"><span class="stat-num" id="totalAgu">100</span><span class="stat-lbl">Aguardando</span></div>
+      </div>
+      <div class="progress-card">
+        <div class="progress-header"><span class="progress-label">Progresso — 100 convidados</span><span class="progress-pct" id="pct">0%</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="pBar" style="width:0%"></div></div>
+      </div>
+      <div class="guest-card">
+        <div class="guest-card-title">Lista de confirmações</div>
+        <ul class="guest-list" id="painelList"><li class="empty-msg">Nenhuma confirmação ainda.</li></ul>
+      </div>
+      <button class="btn-refresh" onclick="atualizarPainel()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
+        Atualizar confirmações
+      </button>
+      <button class="btn-limpar" onclick="limparDados()">Limpar todos os dados</button>
+      <div class="last-update" id="lastUp">—</div>
+    </div>
+  </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
 emailjs.init('h33oxWzwErwi8kwUF');
+var SERVICE   = 'service_5nd34jt';
+var TEMPLATE  = 'template_dcxp758';
+var EMAILS    = ['mostacowilian28@gmail.com', 'amanda.m_moreira@hotmail.com'];
+var SENHA     = 'amanda2026';
+var KEY       = 'chabar_aw2026_v1';
 
-const KEY = 'chabar_2026_oficial';
-const EMAILS = ['mostacowilian28@gmail.com', 'amanda.m_moreira@hotmail.com'];
+function getGuests() {
+  try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch(e) { return []; }
+}
+function saveGuests(list) {
+  try { localStorage.setItem(KEY, JSON.stringify(list)); } catch(e) {}
+}
 
-function confirmar() {
-    const nome = document.getElementById('guestName').value;
-    const qtd = document.getElementById('guestCount').value;
-    const comida = document.getElementById('foodType').value;
+async function confirmar() {
+  var name      = document.getElementById('guestName').value.trim();
+  var countVal  = document.getElementById('guestCount').value;
+  var food      = document.getElementById('foodType').value;
+  if (!name) { document.getElementById('statusMsg').textContent = 'Por favor, informe seu nome completo.'; return; }
 
-    if(!nome) return alert("Por favor, preencha seu nome!");
+  var btn = document.getElementById('confirmBtn');
+  btn.disabled = true; btn.textContent = 'Enviando...';
+  document.getElementById('statusMsg').textContent = '';
 
-    const novo = { nome, qtd, comida, data: new Date().toLocaleString() };
-    let lista = JSON.parse(localStorage.getItem(KEY) || '[]');
-    lista.unshift(novo);
-    localStorage.setItem(KEY, JSON.stringify(lista));
+  var now        = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
+  var countNum   = parseInt(countVal);
+  var countLabel = countVal === '6' ? '6 ou mais' : countVal;
 
+  var guests = getGuests();
+  guests.unshift({ name: name, count: countNum, countLabel: countLabel, food: food, time: now });
+  saveGuests(guests);
+
+  var totalPess  = guests.reduce(function(s,g){ return s + (g.count||1); }, 0);
+  var listaEmail = guests.map(function(g, i){
+    return (i+1) + '. ' + g.name + ' — ' + (g.countLabel||g.count) + ' pessoa(s) — Traz: ' + g.food + ' — ' + g.time;
+  }).join('\n');
+
+  try {
+    // Loop para enviar para os dois e-mails
     EMAILS.forEach(email => {
-        emailjs.send('service_5nd34jt', 'template_dcxp758', {
-            to_email: email,
-            guest_name: nome,
-            guest_count: qtd,
-            message: `Traz: ${comida}`,
-            subject: `Confirmação Chá Bar: ${nome}`
+        emailjs.send(SERVICE, TEMPLATE, {
+          to_email:     email,
+          guest_name:   name,
+          guest_count:  countLabel,
+          confirmed_at: now,
+          subject:      '[Cha Bar] Confirmacao: ' + name + ' (' + food + ')',
+          message:
+            'CHA BAR — AMANDA & WILIAN\n' +
+            'NOVA CONFIRMACAO:\n' +
+            'Nome: ' + name + '\n' +
+            'Pessoas: ' + countLabel + '\n' +
+            'Vai trazer: ' + food + '\n' +
+            'Horario: ' + now + '\n\n' +
+            '----------------------------\n' +
+            'LISTA COMPLETA (' + guests.length + ' confirmado(s) / ' + totalPess + ' pessoa(s)):\n\n' +
+            listaEmail
         });
     });
+  } catch(e) { console.error('EmailJS:', e); }
 
-    document.getElementById('formCard').style.display = 'none';
-    document.getElementById('successCard').style.display = 'block';
+  document.getElementById('formCard').style.display = 'none';
+  document.getElementById('successCard').style.display = 'block';
+  document.getElementById('successTitle').textContent = 'Obrigado, ' + name.split(' ')[0] + '!';
+  document.getElementById('successMsg').innerHTML =
+    'Presenca confirmada para <strong>' + countLabel + ' pessoa' + (countNum > 1 ? 's' : '') + '</strong>.<br>Combinado que você trará: ' + food + '. 🍻🎉';
 }
 
 function abrirPainel() {
-    if(prompt("Senha dos Noivos:") === "amanda2026") {
-        const lista = JSON.parse(localStorage.getItem(KEY) || '[]');
-        alert("Lista de Convidados:\n\n" + lista.map(c => `${c.nome} (${c.qtd} pess.) - ${c.comida}`).join('\n'));
-    }
+  document.getElementById('painelOverlay').classList.add('active');
+  document.getElementById('senhaInput').value = '';
+  document.getElementById('lockError').textContent = '';
+  document.getElementById('lockScreen').style.display = 'block';
+  document.getElementById('painelContent').style.display = 'none';
+  setTimeout(function(){ document.getElementById('senhaInput').focus(); }, 100);
+}
+function fecharPainel() { document.getElementById('painelOverlay').classList.remove('active'); }
+function fecharPainelFora(e) { if (e.target === document.getElementById('painelOverlay')) fecharPainel(); }
+
+function verificarSenha() {
+  if (document.getElementById('senhaInput').value === SENHA) {
+    document.getElementById('lockScreen').style.display = 'none';
+    document.getElementById('painelContent').style.display = 'block';
+    atualizarPainel();
+  } else {
+    document.getElementById('lockError').textContent = 'Senha incorreta. Tente novamente.';
+  }
+}
+
+function atualizarPainel() {
+  var guests    = getGuests();
+  var totalConf = guests.length;
+  var totalPess = guests.reduce(function(s,g){ return s + (g.count||1); }, 0);
+  var aguardando= Math.max(0, 100 - totalConf);
+  var pct        = Math.min(100, Math.round((totalConf / 100) * 100));
+
+  document.getElementById('totalConf').textContent = totalConf;
+  document.getElementById('totalPess').textContent = totalPess;
+  document.getElementById('totalAgu').textContent  = aguardando;
+  document.getElementById('pct').textContent       = pct + '%';
+  document.getElementById('pBar').style.width      = pct + '%';
+
+  var ul = document.getElementById('painelList');
+  ul.innerHTML = '';
+  if (guests.length === 0) {
+    ul.innerHTML = '<li class="empty-msg">Nenhuma confirmacao ainda.</li>';
+  } else {
+    guests.forEach(function(g) {
+      var li = document.createElement('li');
+      li.className = 'guest-item';
+      li.innerHTML =
+        '<div style="display:flex; flex-direction:column; gap:2px;">' +
+            '<span class="guest-name"><strong>' + g.name + '</strong></span>' +
+            '<span style="font-size:11px; color:var(--blue-light);">Traz: ' + (g.food || 'Não informado') + '</span>' +
+        '</div>' +
+        '<span class="guest-badge">' + (g.countLabel||g.count) + ' pess.</span>';
+      ul.appendChild(li);
+    });
+  }
+  document.getElementById('lastUp').textContent = 'Atualizado: ' + new Date().toLocaleTimeString('pt-BR');
+}
+
+function limparDados() {
+  var senha = prompt('Digite a senha para apagar os dados:');
+  if (senha === null) return;
+  if (senha !== SENHA) { alert('Senha incorreta! Os dados nao foram apagados.'); return; }
+  if (!confirm('Tem certeza? Esta acao apagara TODAS as confirmacoes!')) return;
+  saveGuests([]);
+  atualizarPainel();
+  alert('Dados apagados com sucesso.');
 }
 </script>
 </body>

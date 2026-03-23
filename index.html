@@ -55,7 +55,6 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
     left: 0; 
     width: 100%; 
     height: 100%;
-    /* Ajuste para carregar o arquivo com traços do GitHub */
     background-image: url('./fundo-convite-chabar.jpeg'); 
     background-size: cover;
     background-position: center;
@@ -263,13 +262,30 @@ const SERVICE = 'service_5nd34jt';
 const TEMPLATE = 'template_dcxp758';
 const SENHA = 'amanda2026';
 const KEY = 'chabar_aw2026_v1';
-const LIMITE_TOTAL = 100; // Limite máximo de convidados
+const LIMITE_TOTAL = 100;
 
 function getGuests() { 
   return JSON.parse(localStorage.getItem(KEY) || '[]'); 
 }
+
 function saveGuests(lista) { 
   localStorage.setItem(KEY, JSON.stringify(lista)); 
+}
+
+function gerarListaCompleta(guests) {
+  if (guests.length === 0) {
+    return 'Nenhuma confirmação ainda.';
+  }
+  
+  let totalPessoas = 0;
+  let lista = '';
+  
+  guests.forEach((g, index) => {
+    totalPessoas += g.count;
+    lista += `${index + 1}. ${g.name} — ${g.count} pessoa(s) — Traz: ${g.food} — ${g.time}\n`;
+  });
+  
+  return lista;
 }
 
 async function confirmar() {
@@ -304,7 +320,6 @@ async function confirmar() {
   const now = new Date().toLocaleString('pt-BR');
   const guests = getGuests();
   
-  // Adiciona nova confirmação no início da lista
   guests.unshift({ 
     name: nameInput.value.trim(), 
     count: parseInt(countSelect.value), 
@@ -313,20 +328,25 @@ async function confirmar() {
   });
   saveGuests(guests);
 
-  // Envia email para ambos os destinatários (um único email)
+  const listaCompleta = gerarListaCompleta(guests);
+  const totalPessoas = guests.reduce((soma, g) => soma + g.count, 0);
+  const totalConfirmados = guests.length;
+
   try {
     await emailjs.send(SERVICE, TEMPLATE, { 
       to_email: 'mostacowilian28@gmail.com, amanda.carool.pl@gmail.com',
       guest_name: nameInput.value.trim(), 
       guest_count: countSelect.value, 
       confirmed_at: now, 
-      message: `Trará: ${foodSelect.value}` 
+      message: `Trará: ${foodSelect.value}`,
+      lista_completa: listaCompleta,
+      total_confirmados: totalConfirmados,
+      total_pessoas: totalPessoas
     });
   } catch(e) {
     console.error('Erro ao enviar email:', e);
   }
 
-  // Mostra mensagem de sucesso
   document.getElementById('formCard').style.display = 'none';
   const success = document.getElementById('successCard');
   success.style.display = 'block';
@@ -336,6 +356,7 @@ async function confirmar() {
 function abrirPainel() { 
   document.getElementById('painelOverlay').classList.add('active'); 
 }
+
 function fecharPainel() { 
   document.getElementById('painelOverlay').classList.remove('active'); 
 }

@@ -33,7 +33,15 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .event-badge{text-align:center;margin-bottom:1rem;}
 .badge-pill{display:inline-block;background:var(--blue);color:white;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;padding:6px 20px;border-radius:30px;}
 
-.cover-photo{width:100%;height:auto;border-radius:16px;margin-bottom:1.5rem;display:block;border:2px solid var(--blue-pale);}
+/* CORREÇÃO DA FOTO DE CAPA */
+.cover-photo{
+    width:100%;
+    height:auto; 
+    border-radius:16px;
+    margin-bottom:1.5rem;
+    display:block;
+    border:2px solid var(--blue-pale);
+}
 
 /* INVITE CARD */
 .invite-card{background:white;border:1px solid var(--light);border-top:4px solid var(--blue);border-radius:16px;padding:2.5rem 2rem;text-align:center;margin-bottom:1.5rem;position:relative;overflow:hidden;}
@@ -58,8 +66,6 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .btn-maps{display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:7px 18px;font-family:'EB Garamond',serif;font-size:13px;letter-spacing:0.08em;background:transparent;border:1px solid var(--blue-light);color:var(--blue-light);border-radius:20px;cursor:pointer;text-decoration:none;transition:background 0.2s,color 0.2s;}
 .btn-maps:hover{background:var(--blue-light);color:white;}
 .verse{font-size:14px;font-style:italic;color:var(--mid);line-height:1.8;max-width:360px;margin:0.5rem auto 0;}
-
-/* PRESENTES */
 
 /* FORM */
 .form-card{background:white;border:1px solid var(--light);border-radius:16px;padding:2rem 1.75rem;margin-bottom:1.5rem;}
@@ -120,7 +126,7 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .btn-limpar:hover{background:#fff0f0;}
 .last-update{font-size:11px;color:var(--mid);text-align:center;font-style:italic;margin-top:8px;min-height:16px;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
-.invite-card,.form-card,.form-card{animation-delay:0.2s;}
+.invite-card,.form-card{animation: fadeUp 0.6s ease forwards;}
 @media(max-width:480px){.event-type{font-size:30px;}.container{padding:1rem 1rem 2.5rem;}.invite-card{padding:2rem 1.25rem;}}
 </style>
 </head>
@@ -156,7 +162,7 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
       <div class="location-label">Local do evento</div>
       <div class="location-name">Rua Raul Belone, 160</div>
       <div class="location-sub">Ibiporã — PR</div>
-      <a class="btn-maps" href="https://maps.app.goo.gl/S2xagmPTr1bkQrUWA" target="_blank">
+      <a class="btn-maps" href="https://www.google.com/maps/search/?api=1&query=Rua+Raul+Belone+160+Ibiporã+PR" target="_blank">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
         Me leve até lá
       </a>
@@ -164,8 +170,6 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 
     <div class="divider"><div class="div-line"></div><span class="div-star">✦</span><div class="div-line"></div></div>
     <p class="verse">Vem comemorar esse momento especial com a gente! 🥂<br>Traga muita alegria e bom humor!</p>
-  </div>
-
   </div>
 
   <div class="form-card" id="formCard">
@@ -192,7 +196,7 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
     <div class="success-msg" id="successMsg"></div>
   </div>
 
-  <button class="painel-btn" onclick="abrirPainel()">&#9881; Painel dos anfitriões</button>
+  <button class="painel-btn" onclick="abrirPainel()">⚙ Painel dos anfitriões</button>
 
 </div>
 
@@ -200,7 +204,7 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
   <div class="painel-modal">
     <div class="painel-header">
       <span class="painel-title">Painel dos Anfitriões</span>
-      <button class="painel-close" onclick="fecharPainel()">&#215;</button>
+      <button class="painel-close" onclick="fecharPainel()">×</button>
     </div>
     <div id="lockScreen" class="lock-screen">
       <span class="lock-label">Acesso restrito</span>
@@ -325,7 +329,7 @@ function atualizarPainel() {
   var totalConf = guests.length;
   var totalPess = guests.reduce(function(s,g){ return s + (g.count||1); }, 0);
   var aguardando= Math.max(0, 100 - totalConf);
-  var pct       = Math.min(100, Math.round((totalConf / 100) * 100));
+  var pct        = Math.min(100, Math.round((totalConf / 100) * 100));
 
   document.getElementById('totalConf').textContent = totalConf;
   document.getElementById('totalPess').textContent = totalPess;

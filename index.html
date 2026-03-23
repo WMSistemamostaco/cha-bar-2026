@@ -259,11 +259,18 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
 emailjs.init('h33oxWzwErwi8kwUF');
-const SERVICE = 'service_5nd34jt', TEMPLATE = 'template_dcxp758', SENHA = 'amanda2026', KEY = 'chabar_aw2026_v1';
-const EMAILS = ['mostacowilian28@gmail.com', 'amanda.carool.pl@gmail.com'];
+const SERVICE = 'service_5nd34jt';
+const TEMPLATE = 'template_dcxp758';
+const SENHA = 'amanda2026';
+const KEY = 'chabar_aw2026_v1';
+const LIMITE_TOTAL = 100; // Limite máximo de convidados
 
-function getGuests() { return JSON.parse(localStorage.getItem(KEY) || '[]'); }
-function saveGuests(l) { localStorage.setItem(KEY, JSON.stringify(l)); }
+function getGuests() { 
+  return JSON.parse(localStorage.getItem(KEY) || '[]'); 
+}
+function saveGuests(lista) { 
+  localStorage.setItem(KEY, JSON.stringify(lista)); 
+}
 
 async function confirmar() {
   const nameInput = document.getElementById('guestName');
@@ -276,63 +283,108 @@ async function confirmar() {
   statusMsg.textContent = '';
 
   let hasError = false;
-  if (!nameInput.value.trim()) { nameInput.classList.add('error'); hasError = true; }
-  if (!foodSelect.value) { foodSelect.classList.add('error'); hasError = true; }
+  if (!nameInput.value.trim()) { 
+    nameInput.classList.add('error'); 
+    hasError = true; 
+  }
+  if (!foodSelect.value) { 
+    foodSelect.classList.add('error'); 
+    hasError = true; 
+  }
 
-  if (hasError) { statusMsg.textContent = 'Por favor, preencha os campos destacados.'; return; }
+  if (hasError) { 
+    statusMsg.textContent = 'Por favor, preencha os campos destacados.'; 
+    return; 
+  }
 
   const btn = document.getElementById('confirmBtn');
-  btn.disabled = true; btn.textContent = 'Confirmando...';
+  btn.disabled = true; 
+  btn.textContent = 'Confirmando...';
 
   const now = new Date().toLocaleString('pt-BR');
   const guests = getGuests();
-  guests.unshift({ name: nameInput.value.trim(), count: parseInt(countSelect.value), food: foodSelect.value, time: now });
+  
+  // Adiciona nova confirmação no início da lista
+  guests.unshift({ 
+    name: nameInput.value.trim(), 
+    count: parseInt(countSelect.value), 
+    food: foodSelect.value, 
+    time: now 
+  });
   saveGuests(guests);
 
+  // Envia email para ambos os destinatários (um único email)
   try {
-    for (let email of EMAILS) {
-      await emailjs.send(SERVICE, TEMPLATE, { to_email: email, guest_name: nameInput.value.trim(), guest_count: countSelect.value, confirmed_at: now, message: `Trará: ${foodSelect.value}` });
-    }
-  } catch(e) {}
+    await emailjs.send(SERVICE, TEMPLATE, { 
+      to_email: 'mostacowilian28@gmail.com, amanda.carool.pl@gmail.com',
+      guest_name: nameInput.value.trim(), 
+      guest_count: countSelect.value, 
+      confirmed_at: now, 
+      message: `Trará: ${foodSelect.value}` 
+    });
+  } catch(e) {
+    console.error('Erro ao enviar email:', e);
+  }
 
+  // Mostra mensagem de sucesso
   document.getElementById('formCard').style.display = 'none';
   const success = document.getElementById('successCard');
   success.style.display = 'block';
   document.getElementById('successMsg').innerHTML = `<strong>${nameInput.value.trim()}</strong>, sua presença foi confirmada!<br>Combinado que você trará: <strong>${foodSelect.value}</strong>. 🥂`;
 }
 
-function abrirPainel() { document.getElementById('painelOverlay').classList.add('active'); }
-function fecharPainel() { document.getElementById('painelOverlay').classList.remove('active'); }
+function abrirPainel() { 
+  document.getElementById('painelOverlay').classList.add('active'); 
+}
+function fecharPainel() { 
+  document.getElementById('painelOverlay').classList.remove('active'); 
+}
 
 function verificarSenha() {
-  if (document.getElementById('senhaInput').value === SENHA) {
+  const senhaInput = document.getElementById('senhaInput');
+  if (senhaInput.value === SENHA) {
     document.getElementById('lockScreen').style.display = 'none';
     document.getElementById('painelContent').style.display = 'block';
     atualizarPainel();
-  } else { document.getElementById('lockError').textContent = 'Senha incorreta!'; }
+  } else { 
+    document.getElementById('lockError').textContent = 'Senha incorreta!'; 
+  }
 }
 
 function atualizarPainel() {
   const guests = getGuests();
+  const totalPessoas = guests.reduce((soma, g) => soma + g.count, 0);
+  const restantes = LIMITE_TOTAL - totalPessoas;
+  
   document.getElementById('totalConf').textContent = guests.length;
-  document.getElementById('totalPess').textContent = guests.reduce((s,g) => s + g.count, 0);
+  document.getElementById('totalPess').textContent = totalPessoas;
+  document.getElementById('totalAgu').textContent = restantes >= 0 ? restantes : 0;
   document.getElementById('totalSal').textContent = guests.filter(g => g.food === 'Salgado').length;
   document.getElementById('totalDoc').textContent = guests.filter(g => g.food === 'Doce').length;
   document.getElementById('totalAmbos').textContent = guests.filter(g => g.food === 'Os Dois').length;
   
   const ul = document.getElementById('painelList');
-  ul.innerHTML = guests.length ? '' : '<li style="text-align:center; color:gray;">Sem confirmações.</li>';
-  guests.forEach(g => {
-    const li = document.createElement('li');
-    li.className = 'guest-item';
-    li.innerHTML = `<div><strong>${g.name}</strong><br><small>${g.food}</small></div><span class="guest-badge">${g.count}p</span>`;
-    ul.appendChild(li);
-  });
+  ul.innerHTML = '';
+  
+  if (guests.length === 0) {
+    ul.innerHTML = '<li style="text-align:center; color:gray;">Sem confirmações.</li>';
+  } else {
+    guests.forEach(g => {
+      const li = document.createElement('li');
+      li.className = 'guest-item';
+      li.innerHTML = `<div><strong>${g.name}</strong><br><small>${g.food}</small></div><span class="guest-badge">${g.count}p</span>`;
+      ul.appendChild(li);
+    });
+  }
+  
   document.getElementById('lastUp').textContent = 'Última atualização: ' + new Date().toLocaleTimeString();
 }
 
 function limparDados() {
-  if (confirm('Deseja REALMENTE apagar todas as confirmações?')) { saveGuests([]); atualizarPainel(); }
+  if (confirm('Deseja REALMENTE apagar todas as confirmações?')) { 
+    saveGuests([]); 
+    atualizarPainel(); 
+  }
 }
 </script>
 </body>

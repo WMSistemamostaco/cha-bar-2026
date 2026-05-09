@@ -23,7 +23,6 @@
   --light:#D5D8DC;
   --green:#27ae60;
   --orange:#e67e22;
-  --pink:#e91e63;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--cream);font-family:'EB Garamond',Georgia,serif;color:var(--dark);min-height:100vh;overflow-x:hidden;}
@@ -35,7 +34,6 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 
 .cover-photo{width:100%;height:auto;border-radius:16px;margin-bottom:1.5rem;display:block;border:2px solid var(--blue-pale);}
 
-/* Card principal com imagem de fundo corrigida */
 .invite-card{
     background:white;
     border:1px solid var(--light);
@@ -51,10 +49,7 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .invite-card::before {
     content: "";
     position: absolute;
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%;
+    top: 0; left: 0; width: 100%; height: 100%;
     background-image: url('./fundo-convite-chabar.jpeg'); 
     background-size: cover;
     background-position: center;
@@ -64,8 +59,8 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .invite-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--blue),var(--silver),var(--blue));}
 
 .eyelet{display:inline-block;font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--mid);margin-bottom:1.25rem;}
-.event-type{font-family:'Cormorant Garamond',Georgia,serif;font-size:38px;font-weight:300;color:var(--blue);line-height:1.1;display:block;margin-bottom:0.25rem;}
-.names-row{font-family:'Cormorant Garamond',Georgia,serif;font-size:26px;font-weight:400;color:var(--dark);margin-bottom:0.25rem;}
+.event-type{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:300;color:var(--blue);line-height:1.1;display:block;margin-bottom:0.25rem;}
+.names-row{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:var(--dark);margin-bottom:0.25rem;}
 .names-amp{color:var(--blue-light);font-style:italic;}
 .divider{display:flex;align-items:center;gap:12px;margin:1.25rem auto;max-width:300px;}
 .div-line{flex:1;height:1px;background:linear-gradient(to right,transparent,var(--blue-light),transparent);}
@@ -88,7 +83,6 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .btn-maps:hover{background:var(--blue-light);color:white;}
 .verse{font-size:14px;font-style:italic;color:var(--mid);line-height:1.8;max-width:360px;margin:0.5rem auto 0;}
 
-/* Formulário */
 .form-card{background:white;border:1px solid var(--light);border-radius:16px;padding:2.2rem 1.75rem;margin-bottom:1.5rem;box-shadow: 0 4px 15px rgba(0,0,0,0.03);}
 .form-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--dark);text-align:center;margin-bottom:1.5rem;}
 .field{margin-bottom:1.1rem;}
@@ -99,19 +93,16 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .btn-confirm:hover{background:var(--blue-light);}
 .status-msg{font-size:13px;color:#c0392b;text-align:center;margin-top:0.75rem;min-height:20px;font-style:italic;}
 
-/* Sucesso */
 .success-card{display:none;background:white;border:1px solid var(--light);border-top:4px solid var(--blue);border-radius:16px;padding:2.5rem 1.75rem;text-align:center;margin-bottom:1.5rem;}
 .success-icon{font-size:40px;margin-bottom:1rem;}
 
-/* Rodapé e Botão Painel */
 .footer-container{padding: 20px 0 40px; text-align: center;}
 .painel-btn {
     width: 100%; max-width: 250px; margin: 10px auto; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px;
-    font-family: 'EB Garamond', serif; font-size: 14px; letter-spacing: 0.1em; background: rgba(255, 255, 255, 0.9); border: 1px solid var(--orange); color: var(--orange); border-radius: 30px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    font-family: 'EB Garamond', serif; font-size: 14px; letter-spacing: 0.1em; background: rgba(255, 255, 255, 0.9); border: 1px solid var(--orange); color: var(--orange); border-radius: 30px; cursor: pointer; transition: all 0.3s ease;
 }
-.painel-btn:hover {background: var(--orange); color: white; box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);}
+.painel-btn:hover {background: var(--orange); color: white;}
 
-/* Modal Painel */
 .painel-overlay{display:none;position:fixed;inset:0;background:rgba(26,37,47,0.7);z-index:1000;align-items:center;justify-content:center;padding:1rem;}
 .painel-overlay.active{display:flex;}
 .painel-modal{background:var(--cream);border-radius:16px;padding:2rem;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;}
@@ -123,9 +114,6 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .stat{flex: 1 1 calc(33% - 8px); background:white; border:1px solid var(--light); border-radius:10px; padding:0.8rem 0.3rem; text-align:center;}
 .stat-num{font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:400; color:var(--blue); display:block; line-height:1; margin-bottom:3px;}
 .stat-lbl{font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:var(--mid);}
-.stat-salgado { border-bottom: 3px solid var(--blue-light); }
-.stat-doce { border-bottom: 3px solid var(--pink); }
-.stat-ambos { border-bottom: 3px solid var(--orange); }
 
 .guest-card{background:white;border:1px solid var(--light);border-radius:10px;padding:1rem;margin-bottom:1rem;}
 .guest-list{list-style:none;max-height:240px;overflow-y:auto;}
@@ -138,7 +126,6 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 
 @media(max-width:480px){
     .event-type{font-size:32px;}
-    .stat{flex: 1 1 calc(50% - 8px);}
 }
 </style>
 </head>
@@ -169,7 +156,7 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
       <div class="location-label">Local do evento</div>
       <div class="location-name">Rua Raul Belone, 160</div>
       <div class="location-sub">Ibiporã — PR</div>
-      <a class="btn-maps" href="https://www.google.com/maps/search/?api=1&query=Rua+Raul+Belone+160+Ibipora+PR" target="_blank">
+      <a class="btn-maps" href="https://maps.google.com/?q=Rua+Raul+Belone+160+Ibiporã" target="_blank">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
         Me leve até lá
       </a>
@@ -196,15 +183,6 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
         <option value="6">6 pessoas ou mais</option>
       </select>
     </div>
-    <div class="field">
-      <label>O que vai trazer para comer?</label>
-      <select id="foodType">
-        <option value="" disabled selected>Selecionar...</option>
-        <option value="Salgado">Vou levar um Salgado</option>
-        <option value="Doce">Vou levar um Doce</option>
-        <option value="Os Dois">Levo os dois!</option>
-      </select>
-    </div>
     <button class="btn-confirm" id="confirmBtn" onclick="confirmar()">Confirmar Presença</button>
     <div class="status-msg" id="statusMsg"></div>
   </div>
@@ -217,7 +195,6 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 
   <div class="footer-container">
       <button class="painel-btn" onclick="abrirPainel()">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
           Painel dos Noivos
       </button>
   </div>
@@ -241,9 +218,6 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
         <div class="stat"><span class="stat-num" id="totalConf">0</span><span class="stat-lbl">Confirmados</span></div>
         <div class="stat"><span class="stat-num" id="totalPess">0</span><span class="stat-lbl">Total Pessoas</span></div>
         <div class="stat"><span class="stat-num" id="totalAgu">100</span><span class="stat-lbl">Restantes</span></div>
-        <div class="stat stat-salgado"><span class="stat-num" id="totalSal">0</span><span class="stat-lbl">Salgados</span></div>
-        <div class="stat stat-doce"><span class="stat-num" id="totalDoc">0</span><span class="stat-lbl">Doces</span></div>
-        <div class="stat stat-ambos"><span class="stat-num" id="totalAmbos">0</span><span class="stat-lbl">Os Dois</span></div>
       </div>
       <div class="guest-card">
         <ul class="guest-list" id="painelList"></ul>
@@ -264,52 +238,29 @@ const SENHA = 'amanda2026';
 const KEY = 'chabar_aw2026_v1';
 const LIMITE_TOTAL = 100;
 
-function getGuests() { 
-  return JSON.parse(localStorage.getItem(KEY) || '[]'); 
-}
-
-function saveGuests(lista) { 
-  localStorage.setItem(KEY, JSON.stringify(lista)); 
-}
+function getGuests() { return JSON.parse(localStorage.getItem(KEY) || '[]'); }
+function saveGuests(lista) { localStorage.setItem(KEY, JSON.stringify(lista)); }
 
 function gerarListaCompleta(guests) {
-  if (guests.length === 0) {
-    return 'Nenhuma confirmação ainda.';
-  }
-  
-  let totalPessoas = 0;
+  if (guests.length === 0) return 'Nenhuma confirmação ainda.';
   let lista = '';
-  
   guests.forEach((g, index) => {
-    totalPessoas += g.count;
-    lista += `${index + 1}. ${g.name} — ${g.count} pessoa(s) — Traz: ${g.food} — ${g.time}\n`;
+    lista += `${index + 1}. ${g.name} — ${g.count} pessoa(s) — ${g.time}\n`;
   });
-  
   return lista;
 }
 
 async function confirmar() {
   const nameInput = document.getElementById('guestName');
-  const foodSelect = document.getElementById('foodType');
   const countSelect = document.getElementById('guestCount');
   const statusMsg = document.getElementById('statusMsg');
 
   nameInput.classList.remove('error');
-  foodSelect.classList.remove('error');
   statusMsg.textContent = '';
 
-  let hasError = false;
   if (!nameInput.value.trim()) { 
     nameInput.classList.add('error'); 
-    hasError = true; 
-  }
-  if (!foodSelect.value) { 
-    foodSelect.classList.add('error'); 
-    hasError = true; 
-  }
-
-  if (hasError) { 
-    statusMsg.textContent = 'Por favor, preencha os campos destacados.'; 
+    statusMsg.textContent = 'Por favor, informe seu nome.';
     return; 
   }
 
@@ -319,18 +270,11 @@ async function confirmar() {
 
   const now = new Date().toLocaleString('pt-BR');
   const guests = getGuests();
-  
-  guests.unshift({ 
-    name: nameInput.value.trim(), 
-    count: parseInt(countSelect.value), 
-    food: foodSelect.value, 
-    time: now 
-  });
+  guests.unshift({ name: nameInput.value.trim(), count: parseInt(countSelect.value), time: now });
   saveGuests(guests);
 
   const listaCompleta = gerarListaCompleta(guests);
   const totalPessoas = guests.reduce((soma, g) => soma + g.count, 0);
-  const totalConfirmados = guests.length;
 
   try {
     await emailjs.send(SERVICE, TEMPLATE, { 
@@ -338,74 +282,51 @@ async function confirmar() {
       guest_name: nameInput.value.trim(), 
       guest_count: countSelect.value, 
       confirmed_at: now, 
-      message: `Trará: ${foodSelect.value}`,
       lista_completa: listaCompleta,
-      total_confirmados: totalConfirmados,
+      total_confirmados: guests.length,
       total_pessoas: totalPessoas
     });
-  } catch(e) {
-    console.error('Erro ao enviar email:', e);
-  }
+  } catch(e) { console.error(e); }
 
   document.getElementById('formCard').style.display = 'none';
-  const success = document.getElementById('successCard');
-  success.style.display = 'block';
-  document.getElementById('successMsg').innerHTML = `<strong>${nameInput.value.trim()}</strong>, sua presença foi confirmada!<br>Combinado que você trará: <strong>${foodSelect.value}</strong>. 🥂`;
+  document.getElementById('successCard').style.display = 'block';
+  document.getElementById('successMsg').innerHTML = `<strong>${nameInput.value.trim()}</strong>, sua presença foi confirmada! 🥂`;
 }
 
-function abrirPainel() { 
-  document.getElementById('painelOverlay').classList.add('active'); 
-}
-
-function fecharPainel() { 
-  document.getElementById('painelOverlay').classList.remove('active'); 
-}
+function abrirPainel() { document.getElementById('painelOverlay').classList.add('active'); }
+function fecharPainel() { document.getElementById('painelOverlay').classList.remove('active'); }
 
 function verificarSenha() {
-  const senhaInput = document.getElementById('senhaInput');
-  if (senhaInput.value === SENHA) {
+  if (document.getElementById('senhaInput').value === SENHA) {
     document.getElementById('lockScreen').style.display = 'none';
     document.getElementById('painelContent').style.display = 'block';
     atualizarPainel();
-  } else { 
-    document.getElementById('lockError').textContent = 'Senha incorreta!'; 
-  }
+  } else { document.getElementById('lockError').textContent = 'Senha incorreta!'; }
 }
 
 function atualizarPainel() {
   const guests = getGuests();
   const totalPessoas = guests.reduce((soma, g) => soma + g.count, 0);
-  const restantes = LIMITE_TOTAL - totalPessoas;
+  const restantes = Math.max(0, LIMITE_TOTAL - totalPessoas);
   
   document.getElementById('totalConf').textContent = guests.length;
   document.getElementById('totalPess').textContent = totalPessoas;
-  document.getElementById('totalAgu').textContent = restantes >= 0 ? restantes : 0;
-  document.getElementById('totalSal').textContent = guests.filter(g => g.food === 'Salgado').length;
-  document.getElementById('totalDoc').textContent = guests.filter(g => g.food === 'Doce').length;
-  document.getElementById('totalAmbos').textContent = guests.filter(g => g.food === 'Os Dois').length;
+  document.getElementById('totalAgu').textContent = restantes;
   
   const ul = document.getElementById('painelList');
-  ul.innerHTML = '';
+  ul.innerHTML = guests.length === 0 ? '<li style="text-align:center; color:gray;">Sem confirmações.</li>' : '';
   
-  if (guests.length === 0) {
-    ul.innerHTML = '<li style="text-align:center; color:gray;">Sem confirmações.</li>';
-  } else {
-    guests.forEach(g => {
-      const li = document.createElement('li');
-      li.className = 'guest-item';
-      li.innerHTML = `<div><strong>${g.name}</strong><br><small>${g.food}</small></div><span class="guest-badge">${g.count}p</span>`;
-      ul.appendChild(li);
-    });
-  }
-  
-  document.getElementById('lastUp').textContent = 'Última atualização: ' + new Date().toLocaleTimeString();
+  guests.forEach(g => {
+    const li = document.createElement('li');
+    li.className = 'guest-item';
+    li.innerHTML = `<strong>${g.name}</strong><span class="guest-badge">${g.count}p</span>`;
+    ul.appendChild(li);
+  });
+  document.getElementById('lastUp').textContent = 'Atualizado em: ' + new Date().toLocaleTimeString();
 }
 
 function limparDados() {
-  if (confirm('Deseja REALMENTE apagar todas as confirmações?')) { 
-    saveGuests([]); 
-    atualizarPainel(); 
-  }
+  if (confirm('Deseja APAGAR todas as confirmações?')) { saveGuests([]); atualizarPainel(); }
 }
 </script>
 </body>

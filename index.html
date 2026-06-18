@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Chá Bar — Amanda & Wilian</title>
-<meta property="og:title" content="Chá Bar — Amanda & Wilian 🍻"/>
+<title>Chá Bar — Amanda &amp; Wilian</title>
+<meta property="og:title" content="Chá Bar — Amanda &amp; Wilian 🍻"/>
 <meta property="og:description" content="11 de julho de 2026 • 18h30 • Rua Raul Belone 160, Ibiporã-PR"/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://wmsistemamostaco.github.io/cha-bar-2026/"/>
@@ -13,51 +13,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
 <style>
 :root{
-  --blue:#1B4F72;
-  --blue-light:#2E86C1;
-  --blue-pale:#D6EAF8;
-  --silver:#B0BEC5;
-  --cream:#F4F6F7;
-  --dark:#1A252F;
-  --mid:#5D6D7E;
-  --light:#D5D8DC;
-  --green:#27ae60;
-  --orange:#e67e22;
+  --blue:#1B4F72;--blue-light:#2E86C1;--blue-pale:#D6EAF8;
+  --silver:#B0BEC5;--cream:#F4F6F7;--dark:#1A252F;
+  --mid:#5D6D7E;--light:#D5D8DC;--green:#27ae60;--orange:#e67e22;--red:#c0392b;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--cream);font-family:'EB Garamond',Georgia,serif;color:var(--dark);min-height:100vh;overflow-x:hidden;}
 body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(circle at 15% 15%,rgba(27,79,114,0.07) 0%,transparent 50%),radial-gradient(circle at 85% 85%,rgba(176,190,197,0.08) 0%,transparent 50%);pointer-events:none;z-index:0;}
 .container{max-width:560px;margin:0 auto;padding:2rem 1.25rem 3rem;position:relative;z-index:1;}
-
 .event-badge{text-align:center;margin-bottom:1rem;}
 .badge-pill{display:inline-block;background:var(--blue);color:white;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;padding:6px 20px;border-radius:30px;}
-
 .cover-photo{width:100%;height:auto;border-radius:16px;margin-bottom:1.5rem;display:block;border:2px solid var(--blue-pale);}
-
-.invite-card{
-    background:white;
-    border:1px solid var(--light);
-    border-top:4px solid var(--blue);
-    border-radius:16px;
-    padding: 2.5rem 2rem;
-    text-align:center;
-    margin-bottom:1.5rem;
-    position:relative;
-    overflow:hidden;
-    z-index:1;
-}
-.invite-card::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-image: url('./fundo-convite-chabar.jpeg'); 
-    background-size: cover;
-    background-position: center;
-    opacity: 0.1;
-    z-index: -1;
-}
+.invite-card{background:white;border:1px solid var(--light);border-top:4px solid var(--blue);border-radius:16px;padding:2.5rem 2rem;text-align:center;margin-bottom:1.5rem;position:relative;overflow:hidden;z-index:1;}
+.invite-card::before{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background-image:url('./fundo-convite-chabar.jpeg');background-size:cover;background-position:center;opacity:0.1;z-index:-1;}
 .invite-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--blue),var(--silver),var(--blue));}
-
 .eyelet{display:inline-block;font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--mid);margin-bottom:1.25rem;}
 .event-type{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:300;color:var(--blue);line-height:1.1;display:block;margin-bottom:0.25rem;}
 .names-row{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:var(--dark);margin-bottom:0.25rem;}
@@ -65,67 +34,84 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .divider{display:flex;align-items:center;gap:12px;margin:1.25rem auto;max-width:300px;}
 .div-line{flex:1;height:1px;background:linear-gradient(to right,transparent,var(--blue-light),transparent);}
 .div-star{color:var(--blue);font-size:12px;}
-
 .details-grid{display:grid;grid-template-columns:1fr 1px 1fr;gap:0;margin-bottom:1.25rem;}
 .detail-sep{background:var(--light);}
 .detail{padding:0.5rem 1rem;text-align:center;}
 .detail-label{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:4px;}
 .detail-value{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:500;color:var(--dark);line-height:1.3;}
 .detail-sub{font-size:12px;color:var(--mid);font-style:italic;margin-top:2px;}
-
 .location-block{margin-bottom:1rem;}
 .location-label{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:6px;}
 .location-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:500;color:var(--dark);}
 .location-sub{font-size:12px;color:var(--mid);font-style:italic;margin-top:2px;}
-.mimo-text{color:var(--green); font-weight:bold; font-size:16px; margin-top:10px; display:block;}
-
+.mimo-text{color:var(--green);font-weight:bold;font-size:16px;margin-top:10px;display:block;}
 .btn-maps{display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:7px 18px;font-family:'EB Garamond',serif;font-size:13px;letter-spacing:0.08em;background:rgba(255,255,255,0.7);border:1px solid var(--blue-light);color:var(--blue-light);border-radius:20px;cursor:pointer;text-decoration:none;transition:all 0.2s;}
 .btn-maps:hover{background:var(--blue-light);color:white;}
 .verse{font-size:14px;font-style:italic;color:var(--mid);line-height:1.8;max-width:360px;margin:0.5rem auto 0;}
-
-.form-card{background:white;border:1px solid var(--light);border-radius:16px;padding:2.2rem 1.75rem;margin-bottom:1.5rem;box-shadow: 0 4px 15px rgba(0,0,0,0.03);}
+.form-card{background:white;border:1px solid var(--light);border-radius:16px;padding:2.2rem 1.75rem;margin-bottom:1.5rem;box-shadow:0 4px 15px rgba(0,0,0,0.03);}
 .form-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--dark);text-align:center;margin-bottom:1.5rem;}
 .field{margin-bottom:1.1rem;}
 .field label{display:block;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);margin-bottom:6px;}
-.field input, .field select{width:100%;font-family:'EB Garamond',serif;font-size:16px;padding:12px 14px;border:1px solid var(--light);border-radius:8px;background:var(--cream);color:var(--dark);outline:none;appearance:none;transition: border-color 0.3s;}
-.field input.error, .field select.error {border-color: #c0392b;}
+.field input,.field select{width:100%;font-family:'EB Garamond',serif;font-size:16px;padding:12px 14px;border:1px solid var(--light);border-radius:8px;background:var(--cream);color:var(--dark);outline:none;appearance:none;transition:border-color 0.3s;}
+.field input.error,.field select.error{border-color:#c0392b;}
 .btn-confirm{width:100%;padding:14px;font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:500;background:var(--blue);color:white;border:none;border-radius:8px;cursor:pointer;transition:background 0.2s;}
 .btn-confirm:hover{background:var(--blue-light);}
 .status-msg{font-size:13px;color:#c0392b;text-align:center;margin-top:0.75rem;min-height:20px;font-style:italic;}
-
 .success-card{display:none;background:white;border:1px solid var(--light);border-top:4px solid var(--blue);border-radius:16px;padding:2.5rem 1.75rem;text-align:center;margin-bottom:1.5rem;}
 .success-icon{font-size:40px;margin-bottom:1rem;}
-
-.footer-container{padding: 20px 0 40px; text-align: center;}
-.painel-btn {
-    width: 100%; max-width: 250px; margin: 10px auto; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px;
-    font-family: 'EB Garamond', serif; font-size: 14px; letter-spacing: 0.1em; background: rgba(255, 255, 255, 0.9); border: 1px solid var(--orange); color: var(--orange); border-radius: 30px; cursor: pointer; transition: all 0.3s ease;
-}
-.painel-btn:hover {background: var(--orange); color: white;}
-
+.footer-container{padding:20px 0 40px;text-align:center;}
+.painel-btn{width:100%;max-width:250px;margin:10px auto;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px;font-family:'EB Garamond',serif;font-size:14px;letter-spacing:0.1em;background:rgba(255,255,255,0.9);border:1px solid var(--orange);color:var(--orange);border-radius:30px;cursor:pointer;transition:all 0.3s ease;}
+.painel-btn:hover{background:var(--orange);color:white;}
 .painel-overlay{display:none;position:fixed;inset:0;background:rgba(26,37,47,0.7);z-index:1000;align-items:center;justify-content:center;padding:1rem;}
 .painel-overlay.active{display:flex;}
 .painel-modal{background:var(--cream);border-radius:16px;padding:2rem;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;}
 .painel-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;}
 .painel-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--dark);}
 .painel-close{background:none;border:none;font-size:26px;color:var(--mid);cursor:pointer;}
-
-.stats-row{display:flex; flex-wrap: wrap; gap:8px; margin-bottom: 1rem;}
-.stat{flex: 1 1 calc(33% - 8px); background:white; border:1px solid var(--light); border-radius:10px; padding:0.8rem 0.3rem; text-align:center;}
-.stat-num{font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:400; color:var(--blue); display:block; line-height:1; margin-bottom:3px;}
-.stat-lbl{font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:var(--mid);}
-
+.stats-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1rem;}
+.stat{flex:1 1 calc(33% - 8px);background:white;border:1px solid var(--light);border-radius:10px;padding:0.8rem 0.3rem;text-align:center;}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:400;color:var(--blue);display:block;line-height:1;margin-bottom:3px;}
+.stat-lbl{font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);}
+.gmail-section{background:white;border:1px solid var(--light);border-radius:10px;padding:1rem;margin-bottom:1rem;}
+.gmail-title{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--dark);margin-bottom:0.75rem;}
+.btn-gmail{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;padding:11px;background:white;border:1px solid var(--light);border-radius:8px;cursor:pointer;font-family:'EB Garamond',serif;font-size:15px;color:var(--dark);transition:all 0.2s;box-shadow:0 1px 4px rgba(0,0,0,0.08);}
+.btn-gmail:hover{box-shadow:0 2px 8px rgba(0,0,0,0.15);}
+.gmail-status{font-size:12px;color:var(--mid);text-align:center;margin-top:8px;min-height:16px;font-style:italic;}
+.gmail-status.ok{color:var(--green);}
+.gmail-status.err{color:var(--red);}
 .guest-card{background:white;border:1px solid var(--light);border-radius:10px;padding:1rem;margin-bottom:1rem;}
-.guest-list{list-style:none;max-height:240px;overflow-y:auto;}
-.guest-item{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--light);font-size:13px;}
-.guest-badge{font-size:11px;background:var(--blue-pale);border:1px solid var(--blue-light);color:var(--blue);padding:2px 8px;border-radius:20px;}
-
+.guest-list{list-style:none;max-height:220px;overflow-y:auto;}
+.guest-item{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--light);font-size:13px;gap:6px;}
+.guest-item:last-child{border-bottom:none;}
+.guest-name{flex:1;font-weight:600;}
+.guest-origin{font-size:10px;color:var(--mid);font-style:italic;}
+.guest-badge{font-size:11px;background:var(--blue-pale);border:1px solid var(--blue-light);color:var(--blue);padding:2px 8px;border-radius:20px;white-space:nowrap;}
+.guest-del{background:none;border:none;color:#ccc;cursor:pointer;font-size:16px;padding:0 4px;transition:color 0.2s;}
+.guest-del:hover{color:var(--red);}
+.add-section{background:white;border:1px solid var(--light);border-radius:10px;padding:1rem;margin-bottom:1rem;}
+.add-title{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--dark);margin-bottom:0.75rem;}
+.add-row{display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap;}
+.add-field{flex:1;min-width:130px;}
+.add-field label{display:block;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);margin-bottom:4px;}
+.add-field input,.add-field select{width:100%;font-family:'EB Garamond',serif;font-size:14px;padding:9px 10px;border:1px solid var(--light);border-radius:7px;background:var(--cream);color:var(--dark);outline:none;appearance:none;}
+.add-field input.error{border-color:var(--red);}
+.btn-add{padding:9px 18px;background:var(--green);color:white;border:none;border-radius:7px;cursor:pointer;font-family:'EB Garamond',serif;font-size:14px;white-space:nowrap;transition:background 0.2s;}
+.btn-add:hover{background:#219a52;}
+.add-msg{font-size:12px;margin-top:6px;font-style:italic;min-height:16px;}
+.painel-actions{display:flex;gap:8px;flex-wrap:wrap;}
+.btn-painel{flex:1;padding:11px;font-family:'EB Garamond',serif;font-size:14px;border:none;border-radius:8px;cursor:pointer;transition:background 0.2s;}
+.btn-refresh{background:var(--blue-light);color:white;}
+.btn-refresh:hover{background:var(--blue);}
+.btn-danger{background:var(--red);color:white;}
+.btn-danger:hover{background:#a93226;}
 .lock-screen{text-align:center;padding:1rem 0;}
-.lock-input{width:100%;font-size:18px;padding:12px;border:1px solid var(--light);border-radius:8px;text-align:center;letter-spacing:0.3em;margin-bottom:1rem;}
-.btn-entrar{width:100%;padding:12px;background:var(--blue);color:white;border:none;border-radius:8px;cursor:pointer;}
-
+.lock-input{width:100%;font-size:18px;padding:12px;border:1px solid var(--light);border-radius:8px;text-align:center;letter-spacing:0.3em;margin-bottom:1rem;font-family:'EB Garamond',serif;}
+.btn-entrar{width:100%;padding:12px;background:var(--blue);color:white;border:none;border-radius:8px;cursor:pointer;font-family:'EB Garamond',serif;font-size:15px;}
 @media(max-width:480px){
-    .event-type{font-size:32px;}
+  .event-type{font-size:32px;}
+  .add-row{flex-direction:column;}
+  .add-field{min-width:100%;}
+  .btn-add{width:100%;}
 }
 </style>
 </head>
@@ -137,7 +123,7 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
   <div class="invite-card">
     <span class="eyelet">Venha celebrar conosco</span>
     <span class="event-type">Chá Bar</span>
-    <div class="names-row">Amanda <span class="names-amp">&</span> Wilian</div>
+    <div class="names-row">Amanda <span class="names-amp">&amp;</span> Wilian</div>
     <div class="divider"><div class="div-line"></div><span class="div-star">✦</span><div class="div-line"></div></div>
     <div class="details-grid">
       <div class="detail">
@@ -194,139 +180,320 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
   </div>
 
   <div class="footer-container">
-      <button class="painel-btn" onclick="abrirPainel()">
-          Painel dos Noivos
-      </button>
+    <button class="painel-btn" onclick="abrirPainel()">Painel dos Noivos</button>
   </div>
 </div>
 
+<!-- PAINEL DOS NOIVOS -->
 <div class="painel-overlay" id="painelOverlay" onclick="if(event.target===this)fecharPainel()">
   <div class="painel-modal">
     <div class="painel-header">
       <span class="painel-title">Painel dos Noivos</span>
       <button class="painel-close" onclick="fecharPainel()">×</button>
     </div>
-    
+
     <div id="lockScreen" class="lock-screen">
+      <p style="font-size:13px;color:var(--mid);margin-bottom:1rem;">Digite a senha para acessar</p>
       <input type="password" class="lock-input" id="senhaInput" placeholder="••••••" onkeydown="if(event.key==='Enter')verificarSenha()"/>
       <button class="btn-entrar" onclick="verificarSenha()">Entrar</button>
-      <div id="lockError" style="color:#c0392b; font-size:13px; margin-top:10px;"></div>
+      <div id="lockError" style="color:#c0392b;font-size:13px;margin-top:10px;"></div>
     </div>
 
     <div id="painelContent" style="display:none;">
       <div class="stats-row">
-        <div class="stat"><span class="stat-num" id="totalConf">0</span><span class="stat-lbl">Confirmados</span></div>
+        <div class="stat"><span class="stat-num" id="totalConf">0</span><span class="stat-lbl">Confirmações</span></div>
         <div class="stat"><span class="stat-num" id="totalPess">0</span><span class="stat-lbl">Total Pessoas</span></div>
         <div class="stat"><span class="stat-num" id="totalAgu">100</span><span class="stat-lbl">Restantes</span></div>
       </div>
+
+      <!-- Sincronizar Gmail -->
+      <div class="gmail-section">
+        <div class="gmail-title">📬 Sincronizar com Gmail</div>
+        <button class="btn-gmail" id="btnGmail" onclick="sincronizarGmail()">
+          <svg width="20" height="20" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#4285F4" d="M45 16.2l-5 2.75-5 4.75V40h7a3 3 0 003-3V16.2z"/>
+            <path fill="#34A853" d="M3 16.2l5 2.75 5 4.75V40H6a3 3 0 01-3-3V16.2z"/>
+            <path fill="#EA4335" d="M38 8H10L3 16.2l21 14 21-14L38 8z"/>
+            <path fill="#FBBC05" d="M3 16.2L24 30.2l21-14L38 8 24 18 10 8 3 16.2z"/>
+          </svg>
+          Buscar confirmações do Gmail
+        </button>
+        <div class="gmail-status" id="gmailStatus">Clique para importar todos os e-mails de confirmação</div>
+      </div>
+
+      <!-- Adicionar manualmente -->
+      <div class="add-section">
+        <div class="add-title">✏️ Adicionar manualmente</div>
+        <div class="add-row">
+          <div class="add-field" style="flex:2;">
+            <label>Nome</label>
+            <input type="text" id="addName" placeholder="Nome do convidado" maxlength="80"/>
+          </div>
+          <div class="add-field" style="flex:0 0 75px;">
+            <label>Pessoas</label>
+            <select id="addCount">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6+</option>
+            </select>
+          </div>
+          <button class="btn-add" onclick="adicionarManual()">+ Adicionar</button>
+        </div>
+        <div class="add-msg" id="addMsg"></div>
+      </div>
+
+      <!-- Lista -->
       <div class="guest-card">
         <ul class="guest-list" id="painelList"></ul>
       </div>
-      <button class="btn-entrar" style="background:var(--blue-light); margin-bottom:8px;" onclick="atualizarPainel()">Atualizar Lista</button>
-      <button class="btn-entrar" style="background:#c0392b;" onclick="limparDados()">Limpar Tudo</button>
-      <div id="lastUp" style="font-size:11px; text-align:center; margin-top:10px; color:var(--mid);"></div>
+
+      <div class="painel-actions">
+        <button class="btn-painel btn-refresh" onclick="atualizarPainel()">↻ Atualizar</button>
+        <button class="btn-painel btn-danger" onclick="limparDados()">🗑 Limpar tudo</button>
+      </div>
+      <div id="lastUp" style="font-size:11px;text-align:center;margin-top:10px;color:var(--mid);"></div>
     </div>
   </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+
 <script>
+// ══════════════════════════════════════════
+//  CONFIGURAÇÃO — cole o Client ID abaixo
+//  após criar o projeto no Google Cloud
+// ══════════════════════════════════════════
+const GMAIL_CLIENT_ID = '600221063854-431dj3a5hh91lr3bftjrgfnjehf74hda.apps.googleusercontent.com';
+const GMAIL_SCOPE     = 'https://www.googleapis.com/auth/gmail.readonly';
+
 emailjs.init('h33oxWzwErwi8kwUF');
-const SERVICE = 'service_5nd34jt';
+const SERVICE  = 'service_5nd34jt';
 const TEMPLATE = 'template_dcxp758';
-const SENHA = 'amanda2026';
-const KEY = 'chabar_aw2026_v1';
-const LIMITE_TOTAL = 100;
+const SENHA    = 'amanda2026';
+const KEY      = 'chabar_aw2026_v1';
+const LIMITE   = 100;
 
-function getGuests() { return JSON.parse(localStorage.getItem(KEY) || '[]'); }
-function saveGuests(lista) { localStorage.setItem(KEY, JSON.stringify(lista)); }
+let tokenClient  = null;
+let accessToken  = null;
 
-function gerarListaCompleta(guests) {
-  if (guests.length === 0) return 'Nenhuma confirmação ainda.';
-  let lista = '';
-  guests.forEach((g, index) => {
-    lista += `${index + 1}. ${g.name} — ${g.count} pessoa(s) — ${g.time}\n`;
+// ── storage ──
+function getGuests(){ return JSON.parse(localStorage.getItem(KEY)||'[]'); }
+function saveGuests(l){ localStorage.setItem(KEY, JSON.stringify(l)); }
+
+// ── Google OAuth init ──
+window.addEventListener('load', () => {
+  if(typeof google === 'undefined') return;
+  tokenClient = google.accounts.oauth2.initTokenClient({
+    client_id: GMAIL_CLIENT_ID,
+    scope: GMAIL_SCOPE,
+    callback: async (resp) => {
+      if(resp.error){ setGmailStatus('Erro ao autenticar: ' + resp.error, 'err'); return; }
+      accessToken = resp.access_token;
+      await buscarEmailsConfirmacao();
+    }
   });
-  return lista;
-}
+});
 
-async function confirmar() {
-  const nameInput = document.getElementById('guestName');
-  const countSelect = document.getElementById('guestCount');
-  const statusMsg = document.getElementById('statusMsg');
-
-  nameInput.classList.remove('error');
-  statusMsg.textContent = '';
-
-  if (!nameInput.value.trim()) { 
-    nameInput.classList.add('error'); 
-    statusMsg.textContent = 'Por favor, informe seu nome.';
-    return; 
-  }
-
+// ══════════════════════════════════════════
+//  CONFIRMAR (convidado)
+// ══════════════════════════════════════════
+async function confirmar(){
+  const ni = document.getElementById('guestName');
+  const cs = document.getElementById('guestCount');
+  const sm = document.getElementById('statusMsg');
+  ni.classList.remove('error'); sm.textContent = '';
+  if(!ni.value.trim()){ ni.classList.add('error'); sm.textContent='Por favor, informe seu nome.'; return; }
   const btn = document.getElementById('confirmBtn');
-  btn.disabled = true; 
-  btn.textContent = 'Confirmando...';
-
+  btn.disabled = true; btn.textContent = 'Confirmando...';
   const now = new Date().toLocaleString('pt-BR');
   const guests = getGuests();
-  guests.unshift({ name: nameInput.value.trim(), count: parseInt(countSelect.value), time: now });
+  guests.unshift({ name: ni.value.trim(), count: parseInt(cs.value), time: now, origin: 'form' });
   saveGuests(guests);
-
-  const listaCompleta = gerarListaCompleta(guests);
-  const totalPessoas = guests.reduce((soma, g) => soma + g.count, 0);
-
+  const lista  = guests.map((g,i) => `${i+1}. ${g.name} — ${g.count} pessoa(s) — ${g.time}`).join('\n');
+  const totalP = guests.reduce((s,g) => s + g.count, 0);
   try {
-    await emailjs.send(SERVICE, TEMPLATE, { 
+    await emailjs.send(SERVICE, TEMPLATE, {
       to_email: 'mostacowilian28@gmail.com, amanda.carool.pl@gmail.com',
-      guest_name: nameInput.value.trim(), 
-      guest_count: countSelect.value, 
-      confirmed_at: now, 
-      lista_completa: listaCompleta,
-      total_confirmados: guests.length,
-      total_pessoas: totalPessoas
+      guest_name: ni.value.trim(), guest_count: cs.value, confirmed_at: now,
+      lista_completa: lista, total_confirmados: guests.length, total_pessoas: totalP
     });
-  } catch(e) { console.error(e); }
-
-  document.getElementById('formCard').style.display = 'none';
+  } catch(e){ console.error(e); }
+  document.getElementById('formCard').style.display   = 'none';
   document.getElementById('successCard').style.display = 'block';
-  document.getElementById('successMsg').innerHTML = `<strong>${nameInput.value.trim()}</strong>, sua presença foi confirmada! 🥂`;
+  document.getElementById('successMsg').innerHTML = `<strong>${ni.value.trim()}</strong>, sua presença foi confirmada! 🥂`;
 }
 
-function abrirPainel() { document.getElementById('painelOverlay').classList.add('active'); }
-function fecharPainel() { document.getElementById('painelOverlay').classList.remove('active'); }
+// ══════════════════════════════════════════
+//  PAINEL
+// ══════════════════════════════════════════
+function abrirPainel(){ document.getElementById('painelOverlay').classList.add('active'); }
+function fecharPainel(){ document.getElementById('painelOverlay').classList.remove('active'); }
 
-function verificarSenha() {
-  if (document.getElementById('senhaInput').value === SENHA) {
-    document.getElementById('lockScreen').style.display = 'none';
+function verificarSenha(){
+  if(document.getElementById('senhaInput').value === SENHA){
+    document.getElementById('lockScreen').style.display    = 'none';
     document.getElementById('painelContent').style.display = 'block';
     atualizarPainel();
-  } else { document.getElementById('lockError').textContent = 'Senha incorreta!'; }
+  } else {
+    document.getElementById('lockError').textContent = 'Senha incorreta!';
+  }
 }
 
-function atualizarPainel() {
+// ══════════════════════════════════════════
+//  GMAIL — sincronização automática
+// ══════════════════════════════════════════
+function sincronizarGmail(){
+  if(!tokenClient){ setGmailStatus('Recarregue a página e tente novamente.','err'); return; }
+  setGmailStatus('Aguardando autorização do Google...','');
+  tokenClient.requestAccessToken();
+}
+
+async function buscarEmailsConfirmacao(){
+  setGmailStatus('🔍 Buscando e-mails de confirmação...','');
+  try {
+    const query   = encodeURIComponent('subject:"Nova confirmação - Chá Bar"');
+    const listRes = await fetch(
+      `https://gmail.googleapis.com/gmail/v1/users/me/messages?maxResults=200&q=${query}`,
+      { headers: { Authorization: 'Bearer ' + accessToken } }
+    );
+    const listData = await listRes.json();
+
+    if(!listData.messages || listData.messages.length === 0){
+      setGmailStatus('Nenhum e-mail de confirmação encontrado.','err');
+      return;
+    }
+
+    const guests = getGuests();
+    let novos = 0;
+
+    for(const msg of listData.messages){
+      const msgRes = await fetch(
+        `https://gmail.googleapis.com/gmail/v1/users/me/messages/${msg.id}?format=full`,
+        { headers: { Authorization: 'Bearer ' + accessToken } }
+      );
+      const msgData = await msgRes.json();
+      const body    = extrairCorpo(msgData);
+      if(!body) continue;
+
+      const nomeMatch    = body.match(/Nome:\s*(.+)/i);
+      const pessoasMatch = body.match(/Pessoas:\s*(\d+)/i);
+      const horarioMatch = body.match(/Horário:\s*(.+)/i);
+
+      if(!nomeMatch) continue;
+
+      const nome    = nomeMatch[1].trim();
+      const pessoas = pessoasMatch ? parseInt(pessoasMatch[1]) : 1;
+      const horario = horarioMatch ? horarioMatch[1].trim() : new Date().toLocaleString('pt-BR');
+
+      if(guests.some(g => g.name.toLowerCase() === nome.toLowerCase())) continue;
+
+      guests.push({ name: nome, count: pessoas, time: horario, origin: 'gmail' });
+      novos++;
+    }
+
+    guests.sort((a,b) => a.name.localeCompare(b.name));
+    saveGuests(guests);
+    atualizarPainel();
+
+    if(novos === 0){
+      setGmailStatus('✔ Já sincronizado — nenhum novo convidado.','ok');
+    } else {
+      setGmailStatus(`✔ ${novos} novo(s) convidado(s) importado(s)!`,'ok');
+    }
+  } catch(e){
+    console.error(e);
+    setGmailStatus('Erro ao buscar e-mails. Tente novamente.','err');
+  }
+}
+
+function extrairCorpo(msgData){
+  try {
+    const parts = msgData.payload.parts || [msgData.payload];
+    for(const part of parts){
+      if(part.mimeType === 'text/plain' && part.body && part.body.data){
+        return atob(part.body.data.replace(/-/g,'+').replace(/_/g,'/'));
+      }
+    }
+    if(msgData.payload.body && msgData.payload.body.data){
+      return atob(msgData.payload.body.data.replace(/-/g,'+').replace(/_/g,'/'));
+    }
+  } catch(e){}
+  return null;
+}
+
+function setGmailStatus(msg, tipo){
+  const el = document.getElementById('gmailStatus');
+  el.textContent = msg;
+  el.className   = 'gmail-status' + (tipo ? ' ' + tipo : '');
+}
+
+// ══════════════════════════════════════════
+//  ADICIONAR MANUALMENTE
+// ══════════════════════════════════════════
+function adicionarManual(){
+  const nameEl = document.getElementById('addName');
+  const cntEl  = document.getElementById('addCount');
+  const msg    = document.getElementById('addMsg');
+  nameEl.classList.remove('error'); msg.textContent = '';
+  const name = nameEl.value.trim();
+  if(!name){ nameEl.classList.add('error'); msg.style.color='var(--red)'; msg.textContent='Informe o nome.'; return; }
   const guests = getGuests();
-  const totalPessoas = guests.reduce((soma, g) => soma + g.count, 0);
-  const restantes = Math.max(0, LIMITE_TOTAL - totalPessoas);
-  
-  document.getElementById('totalConf').textContent = guests.length;
-  document.getElementById('totalPess').textContent = totalPessoas;
-  document.getElementById('totalAgu').textContent = restantes;
-  
-  const ul = document.getElementById('painelList');
-  ul.innerHTML = guests.length === 0 ? '<li style="text-align:center; color:gray;">Sem confirmações.</li>' : '';
-  
-  guests.forEach(g => {
-    const li = document.createElement('li');
-    li.className = 'guest-item';
-    li.innerHTML = `<strong>${g.name}</strong><span class="guest-badge">${g.count}p</span>`;
-    ul.appendChild(li);
-  });
-  document.getElementById('lastUp').textContent = 'Atualizado em: ' + new Date().toLocaleTimeString();
+  if(guests.some(g => g.name.toLowerCase() === name.toLowerCase())){
+    msg.style.color='var(--orange)'; msg.textContent=`"${name}" já está na lista.`; return;
+  }
+  const now = new Date().toLocaleString('pt-BR');
+  guests.unshift({ name, count: parseInt(cntEl.value), time: now, origin: 'manual' });
+  saveGuests(guests);
+  nameEl.value = ''; cntEl.value = '1';
+  msg.style.color = 'var(--green)'; msg.textContent = `✔ ${name} adicionado!`;
+  setTimeout(() => msg.textContent = '', 3000);
+  atualizarPainel();
 }
 
-function limparDados() {
-  if (confirm('Deseja APAGAR todas as confirmações?')) { saveGuests([]); atualizarPainel(); }
+// ══════════════════════════════════════════
+//  LISTA / PAINEL
+// ══════════════════════════════════════════
+function atualizarPainel(){
+  const guests = getGuests();
+  const totalP = guests.reduce((s,g) => s + g.count, 0);
+  document.getElementById('totalConf').textContent = guests.length;
+  document.getElementById('totalPess').textContent = totalP;
+  document.getElementById('totalAgu').textContent  = Math.max(0, LIMITE - totalP);
+
+  const ul = document.getElementById('painelList');
+  const originLabel = { form:'🌐 site', gmail:'📬 e-mail', manual:'✏️ manual' };
+
+  if(!guests.length){
+    ul.innerHTML = '<li style="text-align:center;color:gray;padding:12px 0;">Sem confirmações ainda.</li>';
+  } else {
+    ul.innerHTML = '';
+    guests.forEach((g, i) => {
+      const li = document.createElement('li');
+      li.className = 'guest-item';
+      li.innerHTML = `
+        <span class="guest-name">${g.name}
+          <span class="guest-origin">${originLabel[g.origin] || ''}</span>
+        </span>
+        <span class="guest-badge">${g.count}p</span>
+        <button class="guest-del" onclick="removerConvidado(${i})" title="Remover">✕</button>`;
+      ul.appendChild(li);
+    });
+  }
+  document.getElementById('lastUp').textContent = 'Atualizado em: ' + new Date().toLocaleTimeString('pt-BR');
+}
+
+function removerConvidado(i){
+  const guests = getGuests();
+  if(!confirm(`Remover "${guests[i].name}"?`)) return;
+  guests.splice(i, 1); saveGuests(guests); atualizarPainel();
+}
+
+function limparDados(){
+  if(confirm('Apagar TODAS as confirmações?')){ saveGuests([]); atualizarPainel(); }
 }
 </script>
 </body>

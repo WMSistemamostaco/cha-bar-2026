@@ -45,6 +45,7 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .location-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:500;color:var(--dark);}
 .location-sub{font-size:12px;color:var(--mid);font-style:italic;margin-top:2px;}
 .mimo-text{color:var(--green);font-weight:bold;font-size:16px;margin-top:10px;display:block;}
+.bebida-text{color:var(--blue);font-weight:bold;font-size:16px;margin-top:6px;display:block;}
 .btn-maps{display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:7px 18px;font-family:'EB Garamond',serif;font-size:13px;letter-spacing:0.08em;background:rgba(255,255,255,0.7);border:1px solid var(--blue-light);color:var(--blue-light);border-radius:20px;cursor:pointer;text-decoration:none;transition:all 0.2s;}
 .btn-maps:hover{background:var(--blue-light);color:white;}
 .verse{font-size:14px;font-style:italic;color:var(--mid);line-height:1.8;max-width:360px;margin:0.5rem auto 0;}
@@ -147,6 +148,7 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
         Me leve até lá
       </a>
       <span class="mimo-text">🎁 Tragam mimos para os Noivos!</span>
+      <span class="bebida-text">🍺 Tragam a sua bebida preferida!</span>
     </div>
     <div class="divider"><div class="div-line"></div><span class="div-star">✦</span><div class="div-line"></div></div>
     <p class="verse">Vem comemorar esse momento especial com a gente! 🥂<br>Traga muita alegria e bom humor!</p>
@@ -263,10 +265,6 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 
 <script>
-// ══════════════════════════════════════════
-//  CONFIGURAÇÃO — cole o Client ID abaixo
-//  após criar o projeto no Google Cloud
-// ══════════════════════════════════════════
 const GMAIL_CLIENT_ID = '600221063854-431dj3a5hh91lr3bftjrgfnjehf74hda.apps.googleusercontent.com';
 const GMAIL_SCOPE     = 'https://www.googleapis.com/auth/gmail.readonly';
 
@@ -280,11 +278,9 @@ const LIMITE   = 100;
 let tokenClient  = null;
 let accessToken  = null;
 
-// ── storage ──
 function getGuests(){ return JSON.parse(localStorage.getItem(KEY)||'[]'); }
 function saveGuests(l){ localStorage.setItem(KEY, JSON.stringify(l)); }
 
-// ── Google OAuth init ──
 window.addEventListener('load', () => {
   if(typeof google === 'undefined') return;
   tokenClient = google.accounts.oauth2.initTokenClient({
@@ -298,9 +294,6 @@ window.addEventListener('load', () => {
   });
 });
 
-// ══════════════════════════════════════════
-//  CONFIRMAR (convidado)
-// ══════════════════════════════════════════
 async function confirmar(){
   const ni = document.getElementById('guestName');
   const cs = document.getElementById('guestCount');
@@ -327,9 +320,6 @@ async function confirmar(){
   document.getElementById('successMsg').innerHTML = `<strong>${ni.value.trim()}</strong>, sua presença foi confirmada! 🥂`;
 }
 
-// ══════════════════════════════════════════
-//  PAINEL
-// ══════════════════════════════════════════
 function abrirPainel(){ document.getElementById('painelOverlay').classList.add('active'); }
 function fecharPainel(){ document.getElementById('painelOverlay').classList.remove('active'); }
 
@@ -343,9 +333,6 @@ function verificarSenha(){
   }
 }
 
-// ══════════════════════════════════════════
-//  GMAIL — sincronização automática
-// ══════════════════════════════════════════
 function sincronizarGmail(){
   if(!tokenClient){ setGmailStatus('Recarregue a página e tente novamente.','err'); return; }
   setGmailStatus('Aguardando autorização do Google...','');
@@ -431,9 +418,6 @@ function setGmailStatus(msg, tipo){
   el.className   = 'gmail-status' + (tipo ? ' ' + tipo : '');
 }
 
-// ══════════════════════════════════════════
-//  ADICIONAR MANUALMENTE
-// ══════════════════════════════════════════
 function adicionarManual(){
   const nameEl = document.getElementById('addName');
   const cntEl  = document.getElementById('addCount');
@@ -454,9 +438,6 @@ function adicionarManual(){
   atualizarPainel();
 }
 
-// ══════════════════════════════════════════
-//  LISTA / PAINEL
-// ══════════════════════════════════════════
 function atualizarPainel(){
   const guests = getGuests();
   const totalP = guests.reduce((s,g) => s + g.count, 0);
